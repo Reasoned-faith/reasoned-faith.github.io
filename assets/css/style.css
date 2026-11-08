@@ -228,3 +228,29 @@ section{padding:28px 0}
 /* Reading view: article on the left, Main Categories on the right */
 .col-main .ap{max-width:none;margin:0}
 @media (max-width:900px){.col-side{margin-top:20px}}
+
+/* Share bar + share panel on reading pages */
+.crumbs{margin-top:16px}
+#related .mc{margin-top:0}
+.sharebar{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 18px;padding:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sb-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;font:inherit;font-size:.85rem;font-weight:500;cursor:pointer;transition:.2s}
+.sb-btn:hover{border-color:var(--accent);color:var(--accent)}
+.sb-btn svg{width:16px;height:16px}
+.sb-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.sb-primary:hover{color:#fff;filter:brightness(1.12)}
+:root[data-theme="dark"] .sb-primary{color:#14110f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sb-primary{color:#14110f}}
+.sharepanel{position:absolute;left:0;top:calc(100% + 10px);z-index:30;width:min(440px,100%);background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:16px 18px 20px}
+.sharepanel[hidden]{display:none}
+.sp-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.sp-head b{font-family:var(--serif);font-size:1.3rem}
+.sp-x{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:1.2rem;line-height:1;cursor:pointer}
+.sp-x:hover{border-color:var(--accent);color:var(--accent)}
+.sp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 8px}
+.sp-app{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;padding:0;font:inherit;font-size:.74rem;color:var(--muted);cursor:pointer;text-decoration:none!important}
+.sp-app i{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;font-style:normal;font-weight:700;font-size:1rem;transition:.2s}
+.sp-app:hover{color:var(--text)}
+.sp-app:hover i{transform:translateY(-3px);box-shadow:var(--shadow)}
+.sp-app[hidden]{display:none}
+.prose a.sp-app{color:var(--muted);text-decoration:none}
+.prose a.sp-app:hover{color:var(--text)}
