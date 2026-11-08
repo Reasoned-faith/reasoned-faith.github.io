@@ -34,7 +34,7 @@
   /* ---------- Home page ---------- */
   var PER = 5, shown = PER, term = "";
   var cards = $$("#articles .card"), more = $("#more"), less = $("#less");
-  var sections = ["latest", "side", "vd", "vm"].map(function (id) { return $("#" + id); });
+  var sections = ["latest", "vd", "vm"].map(function (id) { return $("#" + id); });
   var catpage = $("#catpage");
 
   function render() {
