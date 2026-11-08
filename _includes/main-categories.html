@@ -1,21 +1,23 @@
 <section id="main-categories">
-   <div class="maincats">
+  <div class="maincats">
   {% assign mcn = 0 %}
   {% for c in catlist %}
-    {% capture cname %}{% include catname.html slug=c %}{% endcapture %}
+  {% capture cname %}{% include catname.html slug=c %}{% endcapture %}
     {% assign pre = "articles/" | append: c | append: "/" %}
     {% assign ca = arts | where_exp: "p", "p.path contains pre" %}
     {% if c != "hinduism" and mcn < 3 %}{% assign mcn = mcn | plus: 1 %}
     <div class="mc">
       <h3 class="mc-h"><a href="{{ '/' | relative_url }}#{{ c }}">{{ cname | strip }}</a></h3>
       <div class="mc-box">
-        {% assign subs = "" %}{% assign n = 0 %}
-        {% for p in ca %}{% assign pt = p.path | split: "/" %}{% if pt.size > 3 %}{% assign subs = subs | append: pt[2] | append: "," %}{% endif %}{% endfor %}
+        {% assign subs = "" %}{% assign n = 0 %}{% assign direct = 0 %}
+        {% for p in ca %}{% assign pt = p.path | split: "/" %}{% if pt.size > 3 %}{% assign subs = subs | append: pt[2] | append: "," %}{% elsif pt.size == 3 %}{% assign direct = direct | plus: 1 %}{% endif %}{% endfor %}
         {% assign sublist = subs | split: "," | uniq %}
+        {% assign total = direct | plus: sublist.size %}
         <ul>
-          {% for sl in sublist %}{% capture sn %}{% include catname.html slug=sl %}{% endcapture %}{% assign n = n | plus: 1 %}<li><a href="{{ '/' | relative_url }}#{{ c }}/{{ sl }}">{{ sn | strip }}</a></li>
-          {% endfor %}{% for p in ca %}{% assign pt = p.path | split: "/" %}{% if pt.size == 3 %}{% assign n = n | plus: 1 %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+          {% for sl in sublist %}{% if n < 5 %}{% capture sn %}{% include catname.html slug=sl %}{% endcapture %}{% assign n = n | plus: 1 %}<li><a href="{{ '/' | relative_url }}#{{ c }}/{{ sl }}">{{ sn | strip }}</a></li>
+          {% endif %}{% endfor %}{% for p in ca %}{% assign pt = p.path | split: "/" %}{% if pt.size == 3 and n < 5 %}{% assign n = n | plus: 1 %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
           {% endif %}{% endfor %}{% if n == 0 %}<li class="mc-empty">No articles yet.</li>{% endif %}
+          {% if total > 5 %}<li class="mc-more"><a href="{{ '/' | relative_url }}#{{ c }}">View all in {{ cname | strip }}</a></li>{% endif %}
         </ul>
       </div>
     </div>
