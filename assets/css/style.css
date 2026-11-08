@@ -363,3 +363,17 @@ img,video,iframe,svg{max-width:100%}
   .sp-app i{width:42px;height:42px}
   .site-footer{padding-top:28px}
 }
+
+/* Main Categories: framed cards */
+.mc-h{display:flex;align-items:center;gap:12px;margin:0 0 12px;color:var(--accent);font-size:.8rem;letter-spacing:.08em}
+.mc-h::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.mc-box{position:relative;overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,var(--surface) 0%,var(--bg) 100%);border-radius:18px;padding:6px 22px 6px 26px;box-shadow:var(--shadow);transition:.25s}
+.mc-box::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--gold),var(--accent))}
+.mc-box:hover{border-color:var(--gold)}
+.mc-box li{margin:0;border-bottom:1px solid var(--line)}
+.mc-box li:last-child{border-bottom:0}
+.mc-box li a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;color:var(--text);font-weight:600;text-decoration:none;transition:.2s}
+.mc-box li a::after{content:"\2192";flex:none;color:var(--gold);transition:.2s}
+.mc-box li a:hover{color:var(--accent);padding-left:6px}
+.mc-box li a:hover::after{color:var(--accent);transform:translateX(4px)}
+.mc-box li.mc-empty{padding:13px 0}
