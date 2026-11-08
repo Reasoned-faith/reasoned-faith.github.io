@@ -46,13 +46,18 @@ title: Home
   <div class="maincats">
   {% for c in catlist %}
     {% capture cname %}{% include catname.html slug=c %}{% endcapture %}
+    {% assign ck = c | replace: " ", "-" %}
     {% assign pre = "articles/" | append: c | append: "/" %}
     {% assign ca = arts | where_exp: "p", "p.path contains pre" %}
-    <div class="cat">
-      <a class="cat-t" href="#{{ c }}"><b>{{ cname | strip }}</b></a>
-      <span>{{ site.data.categories[c].description }}</span>
-      <ul class="lines">{% for p in ca limit: 3 %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}</ul>
-      <a class="cat-all" href="#{{ c }}">View all →</a>
+    {% assign tot = ca | size %}
+    <div class="card catcard">
+      <div class="body">
+        <span class="tag">Category</span>
+        <h3><a href="#{{ c }}">{{ cname | strip }}</a></h3>
+        <p>{{ site.data.categories[ck].description }}</p>
+        <ul class="lines">{% for p in ca limit: 3 %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}</ul>
+        <div class="meta">{{ tot }} article{% if tot != 1 %}s{% endif %} · <a class="cat-all" href="#{{ c }}">View all →</a></div>
+      </div>
     </div>
   {% endfor %}
   </div>
