@@ -224,3 +224,7 @@ section{padding:28px 0}
 .mc-box li a{color:var(--link);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .mc-box li a:hover{color:var(--accent)}
 .mc-empty{color:var(--muted);font-size:.9rem}
+
+/* Reading view: article on the left, Main Categories on the right */
+.col-main .ap{max-width:none;margin:0}
+@media (max-width:900px){.col-side{margin-top:20px}}
