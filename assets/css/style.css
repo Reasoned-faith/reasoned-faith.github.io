@@ -254,3 +254,112 @@ section{padding:28px 0}
 .sp-app[hidden]{display:none}
 .prose a.sp-app{color:var(--muted);text-decoration:none}
 .prose a.sp-app:hover{color:var(--text)}
+
+/* ================= MOBILE FIXES ================= */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:hidden}
+img,video,iframe,svg{max-width:100%}
+.prose{overflow-wrap:anywhere}
+.prose img,.prose iframe,.prose video{max-width:100%;height:auto}
+.prose pre{max-width:100%;overflow-x:auto}
+.prose table{display:block;max-width:100%;overflow-x:auto}
+.card,.topic,.mc-box{min-width:0}
+.card h3,.topic b,.mc-box li a,.vb-text{overflow-wrap:anywhere}
+
+@media (max-width:720px){
+  .wrap{padding:0 16px}
+
+  /* Header: tighter bar so logo + 3 buttons fit on small phones */
+  .bar{gap:8px;height:60px}
+  .logo{font-size:1.25rem;gap:8px;min-width:0}
+  .logo span{overflow:hidden;text-overflow:ellipsis}
+  .logo svg{width:30px;height:30px}
+  .icon-btn{width:38px;height:38px}
+  .spacer{flex:1;min-width:0}
+
+  /* Dropdown menu + search sit right under the 60px bar */
+  nav{top:60px;padding:8px 16px;margin:0;box-shadow:var(--shadow)}
+  nav a{padding:12px 14px;font-size:1rem}
+  .search{top:68px;left:16px;right:16px;height:46px;z-index:25;box-shadow:var(--shadow)}
+  nav.open ~ .search.open{top:68px}
+  .search input{font-size:16px} /* stops iOS zooming into the page on focus */
+
+  /* Category pills */
+  .subnav .wrap{padding-top:6px;padding-bottom:6px}
+  .subnav a{padding:6px 14px;font-size:.85rem}
+  #articles{scroll-margin-top:110px}
+
+  /* Sections and cards */
+  section{padding:20px 0}
+  .layout{padding-top:16px}
+  .sec-head h2{font-size:1.5rem}
+  .grid{gap:14px}
+  .body{padding:16px}
+  .card h3{font-size:1.25rem}
+  .more-btn{padding:11px 22px}
+
+  /* Main categories + topics */
+  .mc{margin-bottom:28px}
+  .mc-box{padding:18px 18px;border-radius:14px}
+  .mc-box li{font-size:1rem}
+  .topic{padding:16px 18px}
+
+  /* Reading page */
+  .ap h1{font-size:clamp(1.7rem,8vw,2.2rem)}
+  .prose h2{font-size:1.45rem}
+  .prose h3{font-size:1.2rem}
+  .prose p,.prose li{font-size:1rem;line-height:1.75}
+  .prose blockquote{margin:1.2em 0;padding:.4em 1em;font-size:1.1rem}
+  .crumbs{margin-top:12px}
+  .sharebar{gap:6px}
+  .sb-btn{padding:8px 14px}
+  .sharepanel{position:fixed;left:12px;right:12px;top:auto;bottom:calc(12px + env(safe-area-inset-bottom,0px));width:auto;max-height:80vh;overflow:auto}
+  .sp-grid{gap:16px 4px}
+
+  /* Daily verse */
+  .vb-text{font-size:1.15rem}
+
+  /* Footer */
+  .site-footer{margin-top:32px;padding:32px 0 calc(20px + env(safe-area-inset-bottom,0px))}
+  .sf-col p{font-size:1rem}
+  .sf-bottom{margin-top:28px}
+}
+
+@media (max-width:380px){
+  .logo{font-size:1.1rem}
+  .logo svg{width:26px;height:26px}
+  .bar{gap:6px}
+  .icon-btn{width:36px;height:36px}
+  .sp-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* Sidebar categories: no box, border or background around the link lists */
+.mc-box{border:0;background:transparent;border-radius:0;padding:0;box-shadow:none}
+.mc-box li{margin-bottom:12px}
+
+/* Header category pills: no colour fill, same plain style for every category */
+:root:root:root .subnav a{background:transparent;color:var(--muted);border-color:var(--line);filter:none;box-shadow:none}
+:root:root:root .subnav a:hover{background:transparent;color:var(--accent);border-color:var(--accent);filter:none}
+:root:root:root .subnav a.on{background:transparent;color:var(--accent);border-color:var(--accent);box-shadow:none;font-weight:600}
+
+/* Small phones: fits down to 300px wide */
+@media (max-width:340px){
+  html{font-size:14px}
+  .wrap{padding:0 12px}
+  .bar{gap:5px;height:56px}
+  .logo{font-size:1.05rem;gap:6px}
+  .logo svg{width:24px;height:24px}
+  .icon-btn{width:34px;height:34px}
+  .icon-btn svg{width:17px;height:17px}
+  nav{top:56px;padding:6px 12px}
+  .search{top:62px;left:12px;right:12px;height:42px}
+  nav.open ~ .search.open{top:62px}
+  .subnav a{padding:5px 12px;font-size:.82rem}
+  .body{padding:14px}
+  .topic{padding:14px 15px}
+  .sec-head h2{font-size:1.35rem}
+  .sb-btn{padding:7px 12px;font-size:.8rem}
+  .sharepanel{left:8px;right:8px}
+  .sp-app i{width:42px;height:42px}
+  .site-footer{padding-top:28px}
+}
