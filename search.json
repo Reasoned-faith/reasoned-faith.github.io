@@ -6,11 +6,12 @@ permalink: /search.json
 {"a":[
 {%- for p in arts -%}
 {%- assign pt = p.path | split: "/" -%}
-{%- capture cname %}{% include catname.html slug=pt[1] %}{% endcapture -%}
+{%- assign cslug = pt[1] -%}
+{%- capture cname %}{% include catname.html slug=cslug %}{% endcapture -%}
 {%- assign sname = "" -%}{%- assign sslug = "" -%}
 {%- if pt.size > 3 -%}{%- assign sslug = pt[2] -%}{%- capture sname %}{% include catname.html slug=sslug %}{% endcapture -%}{%- endif -%}
 {%- capture body %}{{ p.content | markdownify | strip_html | normalize_whitespace | truncate: 20000, "" }}{% endcapture -%}
-{"title":{{ p.title | jsonify }},"url":{{ p.url | relative_url | jsonify }},"cat":{{ cname | strip | jsonify }},"cs":{{ pt[1] | jsonify }},"sub":{{ sname | strip | jsonify }},"ss":{{ sslug | jsonify }},"excerpt":{{ p.excerpt | strip_html | normalize_whitespace | jsonify }},"tags":{{ p.tags | default: empty | jsonify }},"date":{{ p.date | date: "%-d %b %Y" | jsonify }},"body":{{ body | strip | jsonify }}}{% unless forloop.last %},{% endunless %}
+{"title":{{ p.title | jsonify }},"url":{{ p.url | relative_url | jsonify }},"cat":{{ cname | strip | jsonify }},"cs":{{ cslug | jsonify }},"sub":{{ sname | strip | jsonify }},"ss":{{ sslug | jsonify }},"excerpt":{{ p.excerpt | default: "" | strip_html | normalize_whitespace | jsonify }},"tags":{{ p.tags | jsonify }},"date":{{ p.date | date: "%-d %b %Y" | default: "" | jsonify }},"body":{{ body | strip | jsonify }}}{% unless forloop.last %},{% endunless %}
 {%- endfor -%}
 ],"v":[
 {%- for v in site.data.verses -%}
@@ -18,7 +19,7 @@ permalink: /search.json
 {%- endfor -%}
 ],"t":[
 {%- for t in site.data.topics -%}
-{"title":{{ t.title | jsonify }},"desc":{{ t.description | jsonify }},"q":{{ t.query | default: t.title | jsonify }}}{% unless forloop.last %},{% endunless %}
+{"title":{{ t.title | jsonify }},"desc":{{ t.description | default: "" | jsonify }},"q":{{ t.query | default: t.title | jsonify }}}{% unless forloop.last %},{% endunless %}
 {%- endfor -%}
 ],"c":[
 {%- assign first = true -%}
@@ -28,7 +29,7 @@ permalink: /search.json
 {%- assign pre = "articles/" | append: c | append: "/" -%}
 {%- assign ca = arts | where_exp: "p", "p.path contains pre" -%}
 {%- unless first %},{% endunless -%}{%- assign first = false -%}
-{"name":{{ cname | strip | jsonify }},"desc":{{ site.data.categories[ck].description | jsonify }},"url":{{ "/" | relative_url | append: "#" | append: c | jsonify }},"n":{{ ca.size }},"parent":""}
+{"name":{{ cname | strip | jsonify }},"desc":{{ site.data.categories[ck].description | default: "" | jsonify }},"url":{{ "/" | relative_url | append: "#" | append: c | jsonify }},"n":{{ ca.size }},"parent":""}
 {%- assign subs = "" -%}
 {%- for p in ca -%}{%- assign pt = p.path | split: "/" -%}{%- if pt.size > 3 -%}{%- assign subs = subs | append: pt[2] | append: "," -%}{%- endif -%}{%- endfor -%}
 {%- assign sublist = subs | split: "," | uniq -%}
