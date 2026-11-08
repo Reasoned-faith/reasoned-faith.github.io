@@ -129,20 +129,6 @@ section{padding:28px 0}
 .cat b{font-family:var(--serif);font-size:1.3rem;display:block}
 .cat span{font-size:.82rem;color:var(--muted)}
 .add{display:grid;place-items:center;border-style:dashed;color:var(--muted);text-align:center;font-size:.85rem}
-footer{margin-top:40px;border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.85rem}
-footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
-.verse{max-width:640px;margin:0}
-.verse q{display:block;font-family:var(--serif);font-size:1.35rem;line-height:1.4;color:var(--text);quotes:"\201C" "\201D"}
-.verse cite{display:block;margin-top:6px;font-style:normal;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
-.about{max-width:640px;margin:0;color:var(--muted);font-size:.92rem;line-height:1.7}
-.about strong{color:var(--text);font-weight:600}
-.f-contact{display:flex;gap:12px}
-.f-contact a{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line);background:var(--surface);border-radius:50%;color:var(--text);transition:.2s}
-.f-contact a:hover{border-color:var(--accent);color:var(--accent)}
-.f-contact svg{width:20px;height:20px}
-.f-links{display:flex;gap:18px;font-weight:500}
-.f-links a:hover{color:var(--accent)}
-.f-copy{border-top:1px solid var(--line);padding-top:16px;width:100%}
 
 @media (max-width:900px){
   .grid{grid-template-columns:repeat(2,1fr)}.feature{grid-column:span 2}
@@ -186,7 +172,6 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
   .col-side section{padding-top:0}
 }
 /* Daily verse bar */
-.verse-bar{display:flex;align-items:center;gap:20px;padding:22px 26px;margin:22px 0;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:16px}
 .vb-label{flex:none;width:96px;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);line-height:1.5}
 .vb-label small{display:block;margin-top:4px;font-size:.66rem;font-weight:500;letter-spacing:.04em;text-transform:none;color:var(--muted)}
 .vb-body{flex:1;min-width:0}
@@ -207,6 +192,18 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
 :root[data-theme="dark"] .subnav a{color:#14110f}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .subnav a{color:#14110f}}
 
-/* Footer: stack everything vertically (verse stays as is) */
-.f-contact{flex-direction:column;align-items:center}
-.f-links{flex-direction:column;align-items:center;gap:10px}
+/* Footer: dark three-column layout (same look in light and dark theme) */
+.site-footer{margin-top:48px;background:#1b1e26;color:#e6e8ee;padding:52px 0 26px;font-family:var(--sans)}
+.sf-cols{display:block}
+.sf-col h3{margin:0 0 16px;font-family:var(--sans);font-size:.9rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:#d9dce3;line-height:1.5}
+.sf-col p{margin:0;font-size:1.05rem;line-height:1.6;color:#eceef3;max-width:640px}
+.f-contact{display:flex;gap:10px;margin-top:18px}
+.f-contact a{display:grid;place-items:center;width:38px;height:38px;border:1px solid #2f343f;border-radius:50%;color:#e6e8ee;transition:.2s}
+.f-contact a:hover{border-color:#5ea6ff;color:#5ea6ff}
+.f-contact svg{width:18px;height:18px}
+.sf-bottom{margin-top:44px;border-top:1px solid #e6e8ee;padding-top:18px;text-align:center}
+.sf-copy{font-size:.8rem;color:#6f7581}
+.sf-verse{margin-top:8px;font-size:.8rem;color:#d3e2f5}
+@media (max-width:760px){
+  .site-footer{padding-top:40px}
+}
