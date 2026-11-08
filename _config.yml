@@ -1,0 +1,20 @@
+title: Reasoned Faith
+description: Islamic critique, Christian apologetics, biblical theology, doctrinal studies, and in-depth research by Anthony William.
+author: Anthony William
+whatsapp: "255703338311"
+email: anthonywilliam8311@gmail.com
+verse_text: "Be ready always to give an answer to every man that asketh you a reason of the hope that is in you with meekness and fear."
+verse_ref: "1 Peter 3:15 (KJV)"
+
+# If the site lives at https://USER.github.io/REPO/ set baseurl: "/REPO". For USER.github.io leave it empty.
+baseurl: ""
+url: ""
+
+exclude: [README.md, HOW-TO-POST-ARTICLES.md, Gemfile, Gemfile.lock]
+
+# Every .html file inside /articles automatically uses the article layout.
+defaults:
+  - scope:
+      path: "articles"
+    values:
+      layout: "article"
