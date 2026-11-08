@@ -1,0 +1,17 @@
+# Optional pretty names / descriptions. The key is the FOLDER name.
+# A folder with no entry still works: its name is turned into a title automatically.
+christian-theology:
+  name: Christian Theology
+  description: Core doctrines of the faith, explained from Scripture.
+islamic-dilemma:
+  name: Islamic Dilemma
+  description: A critical look at Islamic claims and sources.
+bible-study:
+  name: Bible Study
+  description: Reading the text carefully and in context.
+catholicism:
+  name: Catholicism
+  description: Tradition, authority and Scripture.
+# Sub-folders (names only):
+trinity:
+  name: The Trinity
