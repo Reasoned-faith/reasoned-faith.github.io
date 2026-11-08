@@ -1,11 +1,12 @@
 <section id="main-categories">
   <div class="sec-head"><h2>Main Categories</h2></div>
   <div class="maincats">
+  {% assign mcn = 0 %}
   {% for c in catlist %}
     {% capture cname %}{% include catname.html slug=c %}{% endcapture %}
     {% assign pre = "articles/" | append: c | append: "/" %}
     {% assign ca = arts | where_exp: "p", "p.path contains pre" %}
-    {% if forloop.index <= 3 %}
+    {% if c != "hinduism" and mcn < 3 %}{% assign mcn = mcn | plus: 1 %}
     <div class="mc">
       <h3 class="mc-h"><a href="{{ '/' | relative_url }}#{{ c }}">{{ cname | strip }}</a></h3>
       <div class="mc-box">
