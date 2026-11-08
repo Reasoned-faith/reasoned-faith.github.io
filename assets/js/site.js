@@ -14,17 +14,8 @@
     try { localStorage.setItem("theme", next); } catch (e) {}
   };
 
-  /* Mobile menu + search toggle */
-  $("#mb").onclick = function () {
-    $("#search").classList.remove("open");
-    $("#nav").classList.toggle("open");
-  };
-  $("#st").onclick = function () {
-    var s = $("#search");
-    $("#nav").classList.remove("open");
-    s.classList.toggle("open");
-    if (s.classList.contains("open")) $("#q").focus();
-  };
+  /* Mobile menu (search lives in assets/js/search.js) */
+  $("#mb").onclick = function () { $("#nav").classList.toggle("open"); };
   /* Close the mobile menu when a link inside it is tapped */
   $$("#nav a").forEach(function (a) {
     a.addEventListener("click", function () { $("#nav").classList.remove("open"); });
@@ -58,31 +49,18 @@
     }
   }
 
-  var q = $("#q"), grid = $("#articles");
-
-  /* On article / tag pages the search sends the reader to the home page */
-  if (!grid) {
-    q.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" && q.value.trim()) location.href = base + "?q=" + encodeURIComponent(q.value.trim());
-    });
-    return;
-  }
+  var grid = $("#articles");
+  if (!grid) return;
 
   /* ---------- Home page ---------- */
-  var PER = 5, shown = PER, term = "";
+  var PER = 5, shown = PER;
   var cards = $$("#articles .card"), more = $("#more"), less = $("#less");
   var sections = ["latest", "vd", "vm"].map(function (id) { return $("#" + id); });
   var catpage = $("#catpage");
 
   function render() {
-    var idx = 0;
-    cards.forEach(function (c) {
-      var ok = !term || c.dataset.s.toLowerCase().indexOf(term) > -1;
-      c.classList.toggle("hid", !(ok && (term || idx < shown)));
-      if (ok) idx++;
-    });
-    $("#more-row").style.display = term ? "none" : "";
-    more.style.display = shown >= idx ? "none" : "";
+    cards.forEach(function (c, i) { c.classList.toggle("hid", i >= shown); });
+    more.style.display = shown >= cards.length ? "none" : "";
     less.style.display = shown > PER ? "" : "none";
   }
   more.onclick = function () { shown = Math.min(shown + PER, cards.length); render(); };
@@ -118,7 +96,7 @@
       tk.forEach(function (t) {
         var a = d.createElement("a"); a.className = "topic"; a.href = "#"; a.innerHTML = "<b></b><span></span>";
         a.firstChild.textContent = t; a.lastChild.textContent = tc[t] + " article" + (tc[t] > 1 ? "s" : "");
-        a.onclick = function (e) { e.preventDefault(); setTerm(t); window.scrollTo({ top: 0, behavior: "smooth" }); };
+        a.onclick = function (e) { e.preventDefault(); openSearch(t); };
         tl.appendChild(a);
       });
       relBox.style.display = tk.length ? "" : "none";
@@ -138,21 +116,18 @@
     window.scrollTo(0, 0);
   }
 
-  function setTerm(v) {
-    term = v.toLowerCase().trim(); q.value = v;
-    if (location.hash) location.hash = ""; else render();
-  }
-  q.addEventListener("input", function () { setTerm(q.value); });
+  function openSearch(v) { if (window.RFSearch) window.RFSearch.open(v); }
   $$("[data-q]").forEach(function (t) {
-    t.onclick = function (e) { e.preventDefault(); setTerm(t.dataset.q); window.scrollTo({ top: 0, behavior: "smooth" }); };
+    t.onclick = function (e) { e.preventDefault(); openSearch(t.dataset.q); };
   });
   $$("[data-home]").forEach(function (a) {
-    a.onclick = function (e) { e.preventDefault(); shown = PER; setTerm(""); window.scrollTo(0, 0); };
+    a.onclick = function (e) {
+      e.preventDefault(); shown = PER; window.scrollTo(0, 0);
+      if (location.hash) location.hash = ""; else route();
+    };
   });
   window.addEventListener("hashchange", route);
 
-  var m = location.search.match(/[?&]q=([^&]*)/);
-  if (m) { term = decodeURIComponent(m[1].replace(/\+/g, " ")).toLowerCase().trim(); q.value = term; }
   route();
 
   var VV=(window.VERSES||[]);
