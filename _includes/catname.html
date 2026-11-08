@@ -1,1 +1,1 @@
-{%- assign _n = site.data.categories[include.slug].name -%}{%- if _n -%}{{ _n }}{%- else -%}{{ include.slug | replace: "-", " " | capitalize }}{%- endif -%}
+{%- assign _k = include.slug | replace: " ", "-" -%}{%- assign _n = site.data.categories[_k].name -%}{%- if _n -%}{{ _n }}{%- else -%}{{ _k | replace: "-", " " | capitalize }}{%- endif -%}
