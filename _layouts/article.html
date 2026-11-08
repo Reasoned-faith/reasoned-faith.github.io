@@ -1,8 +1,10 @@
 ---
 layout: default
 ---
+{% include data.html %}
 {% assign pt = page.path | split: "/" %}
 {% assign cat = pt[1] %}{% assign sub = pt[2] %}{% capture cname %}{% include catname.html slug=cat %}{% endcapture %}
+<div class="layout"><div class="col-main">
 <article class="ap prose">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="{{ '/' | relative_url }}">Home</a> /
@@ -15,3 +17,6 @@ layout: default
   {% if page.excerpt %}<p class="ap-lead">{{ page.excerpt }}</p>{% endif %}
   {{ content }}
 </article>
+</div><aside class="col-side">
+{% include main-categories.html %}
+</aside></div>
