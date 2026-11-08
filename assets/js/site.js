@@ -15,11 +15,20 @@
   };
 
   /* Mobile menu + search toggle */
-  $("#mb").onclick = function () { $("#nav").classList.toggle("open"); };
+  $("#mb").onclick = function () {
+    $("#search").classList.remove("open");
+    $("#nav").classList.toggle("open");
+  };
   $("#st").onclick = function () {
-    var s = $("#search"); s.classList.toggle("open");
+    var s = $("#search");
+    $("#nav").classList.remove("open");
+    s.classList.toggle("open");
     if (s.classList.contains("open")) $("#q").focus();
   };
+  /* Close the mobile menu when a link inside it is tapped */
+  $$("#nav a").forEach(function (a) {
+    a.addEventListener("click", function () { $("#nav").classList.remove("open"); });
+  });
 
   /* Share panel on article pages */
   var sb = $("#sharebar");
