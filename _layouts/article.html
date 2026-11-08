@@ -4,6 +4,7 @@ layout: default
 {% include data.html %}
 {% assign pt = page.path | split: "/" %}
 {% assign cat = pt[1] %}{% assign sub = pt[2] %}{% capture cname %}{% include catname.html slug=cat %}{% endcapture %}
+{% assign surl = page.url | absolute_url | url_encode %}{% assign stitle = page.title | url_encode %}
 <div class="layout"><div class="col-main">
 <article class="ap prose">
   <nav class="crumbs" aria-label="Breadcrumb">
@@ -12,36 +13,61 @@ layout: default
     {% if pt.size > 3 %}{% capture sname %}{% include catname.html slug=sub %}{% endcapture %} /
     <a href="{{ '/' | relative_url }}#{{ pt[1] }}/{{ pt[2] }}">{{ sname | strip }}</a>{% endif %}
   </nav>
+  <div class="sharebar" id="sharebar" data-url="{{ page.url | absolute_url }}">
+    <button type="button" class="sb-btn sb-primary" id="sb-open" aria-expanded="false" aria-controls="sharepanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><span>Share</span></button>
+    <button type="button" class="sb-btn" data-copy><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><span>Copy link</span></button>
+    <div class="sharepanel" id="sharepanel" hidden role="dialog" aria-label="Share this article">
+      <div class="sp-head"><b>Share this article</b><button type="button" class="sp-x" id="sp-close" aria-label="Close">×</button></div>
+      <div class="sp-grid">
+      <a class="sp-app" href="https://wa.me/?text={{ stitle }}%20{{ surl }}" target="_blank" rel="noopener"><i style="background:#25D366">W</i><span>WhatsApp</span></a>
+      <a class="sp-app" href="https://www.facebook.com/sharer/sharer.php?u={{ surl }}" target="_blank" rel="noopener"><i style="background:#1877F2">f</i><span>Facebook</span></a>
+      <a class="sp-app" href="https://twitter.com/intent/tweet?text={{ stitle }}&url={{ surl }}" target="_blank" rel="noopener"><i style="background:#111111">X</i><span>X</span></a>
+      <a class="sp-app" href="https://t.me/share/url?url={{ surl }}&text={{ stitle }}" target="_blank" rel="noopener"><i style="background:#229ED9">T</i><span>Telegram</span></a>
+      <a class="sp-app" href="https://www.linkedin.com/sharing/share-offsite/?url={{ surl }}" target="_blank" rel="noopener"><i style="background:#0A66C2">in</i><span>LinkedIn</span></a>
+      <a class="sp-app" href="https://www.reddit.com/submit?url={{ surl }}&title={{ stitle }}" target="_blank" rel="noopener"><i style="background:#FF4500">R</i><span>Reddit</span></a>
+      <a class="sp-app" href="https://pinterest.com/pin/create/button/?url={{ surl }}&description={{ stitle }}" target="_blank" rel="noopener"><i style="background:#E60023">P</i><span>Pinterest</span></a>
+      <a class="sp-app" href="mailto:?subject={{ stitle }}&body={{ surl }}"><i style="background:#6b625b">@</i><span>Email</span></a>
+      <a class="sp-app" href="sms:?&body={{ stitle }}%20{{ surl }}"><i style="background:#34B7A7">SMS</i><span>Message</span></a>
+      <button type="button" class="sp-app" data-copy><i style="background:var(--accent)">⧉</i><span>Copy link</span></button>
+      <button type="button" class="sp-app" id="sp-native" hidden><i style="background:var(--gold)">•••</i><span>More</span></button>
+      </div>
+    </div>
+  </div>
   <h1>{{ page.title }}</h1>
   <div class="ap-meta">{{ page.author | default: site.author }}{% if page.date %} · {{ page.date | date: "%-d %B %Y" }}{% endif %}</div>
   {% if page.excerpt %}<p class="ap-lead">{{ page.excerpt }}</p>{% endif %}
   {{ content }}
 </article>
 </div><aside class="col-side">
-<section id="main-categories">
-  <div class="sec-head"><h2>Main Categories</h2></div>
-  <div class="maincats">
-  {% assign mcn = 0 %}
-  {% for c in catlist %}
-    {% capture cname %}{% include catname.html slug=c %}{% endcapture %}
-    {% assign pre = "articles/" | append: c | append: "/" %}
-    {% assign ca = arts | where_exp: "p", "p.path contains pre" %}
-    {% if c != "hinduism" and mcn < 3 %}{% assign mcn = mcn | plus: 1 %}
-    <div class="mc">
-      <h3 class="mc-h"><a href="{{ '/' | relative_url }}#{{ c }}">{{ cname | strip }}</a></h3>
-      <div class="mc-box">
-        {% assign subs = "" %}{% assign n = 0 %}
-        {% for p in ca %}{% assign pt = p.path | split: "/" %}{% if pt.size > 3 %}{% assign subs = subs | append: pt[2] | append: "," %}{% endif %}{% endfor %}
-        {% assign sublist = subs | split: "," | uniq %}
-        <ul>
-          {% for sl in sublist %}{% capture sn %}{% include catname.html slug=sl %}{% endcapture %}{% assign n = n | plus: 1 %}<li><a href="{{ '/' | relative_url }}#{{ c }}/{{ sl }}">{{ sn | strip }}</a></li>
-          {% endfor %}{% for p in ca %}{% assign pt = p.path | split: "/" %}{% if pt.size == 3 %}{% assign n = n | plus: 1 %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-          {% endif %}{% endfor %}{% if n == 0 %}<li class="mc-empty">No articles yet.</li>{% endif %}
-        </ul>
-      </div>
-    </div>
-    {% endif %}
-  {% endfor %}
-  </div>
+{% include main-categories.html %}
+
+{%- assign rp = page.path | split: "/" -%}
+{%- assign rpre = "articles/" | append: rp[1] | append: "/" -%}
+{%- assign relurls = "|" -%}{%- assign relhtml = "" -%}{%- assign reln = 0 -%}
+{%- assign fb = false -%}
+{%- for pass in (1..3) -%}
+  {%- if pass == 3 and reln == 0 -%}{%- assign fb = true -%}{%- endif -%}
+  {%- for p in arts -%}
+    {%- assign allow = false -%}
+    {%- if pass < 3 and reln < 5 -%}{%- assign allow = true -%}{%- elsif fb and reln < 3 -%}{%- assign allow = true -%}{%- endif -%}
+    {%- if allow and p.url != page.url -%}
+      {%- assign ok = false -%}
+      {%- if pass == 1 -%}{%- for t in page.tags -%}{%- if p.tags contains t -%}{%- assign ok = true -%}{%- endif -%}{%- endfor -%}
+      {%- elsif pass == 2 -%}{%- if p.path contains rpre -%}{%- assign ok = true -%}{%- endif -%}
+      {%- else -%}{%- assign ok = true -%}{%- endif -%}
+      {%- capture rkey -%}|{{ p.url }}|{%- endcapture -%}
+      {%- if ok -%}{%- unless relurls contains rkey -%}
+        {%- assign relurls = relurls | append: rkey -%}{%- assign reln = reln | plus: 1 -%}
+        {%- capture ritem -%}<a href="{{ p.url | relative_url }}" class="topic"><b>{{ p.title }}</b><span>{{ p.excerpt }}</span></a>{%- endcapture -%}
+        {%- assign relhtml = relhtml | append: ritem -%}
+      {%- endunless -%}{%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- if reln > 0 %}
+<section id="related-topics">
+  <div class="sec-head"><h2>Related Topics</h2></div>
+  <div class="topics">{{ relhtml }}</div>
 </section>
+{%- endif %}
 </aside></div>
