@@ -7,8 +7,8 @@ verse_text: "Be ready always to give an answer to every man that asketh you a re
 verse_ref: "1 Peter 3:15 (KJV)"
 
 # If the site lives at https://USER.github.io/REPO/ set baseurl: "/REPO". For USER.github.io leave it empty.
-baseurl: "/Reasoned-faith"
-url: "https://anthonywilliamnet-ux.github.io"
+baseurl: ""
+url: "https://reasoned-faith.github.io"
 
 exclude: [README.md, HOW-TO-POST-ARTICLES.md, Gemfile, Gemfile.lock]
 
