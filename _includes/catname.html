@@ -1,0 +1,1 @@
+{%- assign _n = site.data.categories[include.slug].name -%}{%- if _n -%}{{ _n }}{%- else -%}{{ include.slug | replace: "-", " " | capitalize }}{%- endif -%}
