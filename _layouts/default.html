@@ -44,8 +44,8 @@
   <div class="subnav">
     <div class="wrap" id="cats">
       <a href="{{ '/' | relative_url }}" data-home{% if page.url == '/' %} class="on"{% endif %}>Latest Articles</a>
-      {% for c in catlist %}{% capture cname %}{% include catname.html slug=c %}{% endcapture %}
-      <a href="{{ '/' | relative_url }}#{{ c }}" data-c="{{ c }}" data-d="{{ site.data.categories[c].description | escape }}">{{ cname | strip }}</a>
+      {% for c in catlist %}{% capture cname %}{% include catname.html slug=c %}{% endcapture %}{% assign ck = c | replace: " ", "-" %}
+      <a href="{{ '/' | relative_url }}#{{ c }}" data-c="{{ c }}" data-d="{{ site.data.categories[ck].description | escape }}">{{ cname | strip }}</a>
       {% endfor %}
     </div>
   </div>
