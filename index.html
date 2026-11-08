@@ -59,11 +59,28 @@ title: Home
 </section>
 
 <section id="topics">
-  <div class="sec-head"><h2>Featured Topics</h2></div>
+  <div class="sec-head"><h2>Related Topics</h2></div>
   <div class="topics">
-  {% for t in site.data.topics limit: 3 %}
+  {%- assign alltags = "" -%}
+  {%- for p in arts -%}{%- for t in p.tags -%}{%- assign alltags = alltags | append: t | append: "," -%}{%- endfor -%}{%- endfor -%}
+  {%- assign utags = alltags | split: "," | uniq -%}
+  {%- assign ranked = "" -%}
+  {%- for t in utags -%}
+    {%- assign n = arts | where_exp: "a", "a.tags contains t" | size -%}
+    {%- assign key = "000" | append: n | slice: -3, 3 -%}
+    {%- assign ranked = ranked | append: key | append: "|" | append: t | append: "," -%}
+  {%- endfor -%}
+  {%- assign rlist = ranked | split: "," | sort | reverse -%}
+  {%- for r in rlist limit: 6 -%}
+    {%- assign parts = r | split: "|" -%}
+    {%- assign tname = parts[1] -%}
+    {%- assign cnt = parts[0] | plus: 0 -%}
+    <a href="#" class="topic" data-q="{{ tname | downcase | escape }}"><b>{{ tname }}</b><span>{{ cnt }} article{% if cnt != 1 %}s{% endif %}</span></a>
+  {%- else -%}
+    {%- for t in site.data.topics limit: 3 -%}
     <a href="#" class="topic" data-q="{{ t.query }}"><b>{{ t.title }}</b><span>{{ t.description }}</span></a>
-  {% endfor %}
+    {%- endfor -%}
+  {%- endfor -%}
   </div>
 </section>
 </aside></div>
