@@ -377,9 +377,13 @@ img,video,iframe,svg{max-width:100%}
 .mc-box li a:hover{color:var(--accent);padding-left:6px}
 .mc-box li a:hover::after{color:var(--accent);transform:translateX(4px)}
 .mc-box li.mc-empty{padding:13px 0}
+
 /* Daily verse: framed card */
 .verse-bar{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:26px 0;padding:20px 24px 20px 28px;border:1px solid var(--line);background:linear-gradient(160deg,var(--surface) 0%,var(--bg) 100%);border-radius:18px;box-shadow:var(--shadow)}
 .verse-bar::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--gold),var(--accent))}
 .verse-bar::after{content:"\201D";position:absolute;right:18px;top:-8px;font-family:var(--serif);font-size:5.5rem;line-height:1;color:var(--gold);opacity:.22;pointer-events:none}
 .verse-bar .vb-label{width:auto}
 .verse-bar .vb-body{width:100%;padding-right:28px}
+
+/* Main Categories: "View all" link when a category has more than five items */
+.mc-box li.mc-more a{color:var(--accent);font-size:.88rem;font-weight:600}
