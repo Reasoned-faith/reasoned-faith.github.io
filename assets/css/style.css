@@ -185,7 +185,6 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
   .col-side .maincats,.col-side .topics{grid-template-columns:1fr}
   .col-side section{padding-top:0}
 }
-
 /* Daily verse bar */
 .verse-bar{display:flex;align-items:center;gap:20px;padding:22px 26px;margin:22px 0;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:16px}
 .vb-label{flex:none;width:96px;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);line-height:1.5}
