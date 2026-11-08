@@ -207,3 +207,20 @@ section{padding:28px 0}
 @media (max-width:760px){
   .site-footer{padding-top:40px}
 }
+
+/* Main Categories: heading + boxed link list (first three), extra categories as headings only */
+:root{--link:#1a5fc4}
+:root[data-theme="dark"]{--link:#6ea8ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--link:#6ea8ff}}
+.maincats{display:flex;flex-direction:column;gap:0}
+.mc{margin:0 0 44px}
+.mc-h{margin:0 0 18px;font-family:var(--sans);font-size:.78rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;line-height:1.4}
+.mc-h a:hover{color:var(--accent)}
+.mc-only{margin:0 0 16px}
+.mc-box{border:1px solid var(--line);background:var(--surface);border-radius:18px;padding:28px 30px}
+.mc-box ul{list-style:none;margin:0;padding:0}
+.mc-box li{margin:0 0 16px;line-height:1.35;font-size:1.02rem}
+.mc-box li:last-child{margin-bottom:0}
+.mc-box li a{color:var(--link);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.mc-box li a:hover{color:var(--accent)}
+.mc-empty{color:var(--muted);font-size:.9rem}
