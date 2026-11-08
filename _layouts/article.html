@@ -1,0 +1,17 @@
+---
+layout: default
+---
+{% assign pt = page.path | split: "/" %}
+{% assign cat = pt[1] %}{% assign sub = pt[2] %}{% capture cname %}{% include catname.html slug=cat %}{% endcapture %}
+<article class="ap prose">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a> /
+    <a href="{{ '/' | relative_url }}#{{ pt[1] }}">{{ cname | strip }}</a>
+    {% if pt.size > 3 %}{% capture sname %}{% include catname.html slug=sub %}{% endcapture %} /
+    <a href="{{ '/' | relative_url }}#{{ pt[1] }}/{{ pt[2] }}">{{ sname | strip }}</a>{% endif %}
+  </nav>
+  <h1>{{ page.title }}</h1>
+  <div class="ap-meta">{{ page.author | default: site.author }}{% if page.date %} · {{ page.date | date: "%-d %B %Y" }}{% endif %}</div>
+  {% if page.excerpt %}<p class="ap-lead">{{ page.excerpt }}</p>{% endif %}
+  {{ content }}
+</article>
