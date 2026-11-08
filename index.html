@@ -59,30 +59,22 @@ title: Home
 </section>
 
 <section id="topics">
-  <div class="sec-head"><h2>Related Topics</h2></div>
+  <div class="sec-head"><h2>Featured Posts</h2></div>
   <div class="topics">
-  {%- assign alltags = "" -%}
-  {%- for p in arts -%}{%- for t in p.tags -%}{%- assign alltags = alltags | append: t | append: "," -%}{%- endfor -%}{%- endfor -%}
-  {%- assign utags = alltags | split: "," | uniq -%}
-  {%- assign ranked = "" -%}
-  {%- for t in utags -%}
-    {%- assign n = arts | where_exp: "a", "a.tags contains t" | size -%}
-    {%- assign key = "000" | append: n | slice: -3, 3 -%}
-    {%- assign ranked = ranked | append: key | append: "|" | append: t | append: "," -%}
-  {%- endfor -%}
-  {%- assign rlist = ranked | split: "," | sort | reverse -%}
-  {%- for r in rlist limit: 6 -%}
-    {%- assign parts = r | split: "|" -%}
-    {%- assign tname = parts[1] -%}
-    {%- assign cnt = parts[0] | plus: 0 -%}
-    <a href="#" class="topic" data-q="{{ tname | downcase | escape }}"><b>{{ tname }}</b><span>{{ cnt }} article{% if cnt != 1 %}s{% endif %}</span></a>
-  {%- else -%}
-    {%- for t in site.data.topics limit: 3 -%}
-    <a href="#" class="topic" data-q="{{ t.query }}"><b>{{ t.title }}</b><span>{{ t.description }}</span></a>
-    {%- endfor -%}
+  {%- for p in arts limit: 12 -%}
+    <a href="{{ p.url | relative_url }}" class="topic"{% if forloop.index > 3 %} style="display:none"{% endif %}><b>{{ p.title }}</b><span>{{ p.excerpt }}</span></a>
   {%- endfor -%}
   </div>
 </section>
 </aside></div>
 {% include verse-bar.html cls="vm" id="vm" %}
 <script>window.VERSES={{ site.data.verses | jsonify }};</script>
+<script>
+(function(){
+  var c=document.querySelector("#topics .topics"); if(!c) return;
+  var items=[].slice.call(c.children), n=items.length; if(n<=3) return;
+  var start=Math.floor(Date.now()/864e5)%n;
+  items.forEach(function(el){el.style.display="none";});
+  for(var i=0;i<3;i++) items[(start+i)%n].style.display="";
+})();
+</script>
