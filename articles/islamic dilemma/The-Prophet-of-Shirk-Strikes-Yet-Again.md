@@ -1,8 +1,6 @@
 ---
 title: "The Prophet of Shirk Strikes Yet Again: The Satanic Verses and the Protection of Christ"
-excerpt: "An examination of the Quranic doctrine of Satanic inspiration, the unique protection of Jesus and Mary, and what this reveals about the identity of Christ."
 date: 2026-10-04
-tags: ["Satanic Verses", "Islamic Apologetics", "Christian Apologetics", "Quran 22:52", "Quran 3:36", "Jesus and Mary", "Prophet Muhammad", "Spiritual Warfare", "Biblical Worldview", "Idolatry", "1 John 3:8", "Matthew 4", "Comparative Theology", "Tafsir al-Jalalayn", "Tafsir Ibn Kathir"]
 ---
 <p>Few Islamic teachings concerning prophethood have generated as much theological difficulty as the Quran’s claim that Satan has deceived every messenger and prophet.</p>
 
