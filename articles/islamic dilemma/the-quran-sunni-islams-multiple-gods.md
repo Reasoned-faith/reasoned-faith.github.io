@@ -1,6 +1,7 @@
 ---
 title: "The Quran: Sunni Islam’s Multiple Gods?"
 date: 2026-09-23
+---
 <p>In this post I will be quoting several posts from IslamQA.org, a prominent, reputable Sunni website, in respect to the Quran being Allah’s speech.</p>
 
 <p>These answers prove that Sunni Islam has turned the Quran into a Christ-like figure by claiming it to be uncreated and a divine emanation from Allah.</p>
