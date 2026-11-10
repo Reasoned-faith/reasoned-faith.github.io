@@ -174,18 +174,6 @@ The modern Sunni explanation is that there are two kinds of speech. The inner, e
 
 The later view, then, was condemned by the very scholar whom Sunnis follow. And Muslims today cannot appeal to “Imam Ahmad” and also say that the recitation is created without contradicting him. Some later Hanbali scholars went the other way and held that the letters and sound of the Quran are themselves Allah’s eternal speech, which is the position the title of this article describes.
 
-### Three Sunni positions, side by side
-
-It helps to see how the positions line up, because modern Sunnis do not all agree with one another.
-
-| Position | Who holds it | What it says about the Quran |
-|---|---|---|
-| **Created** | Mu‘tazilites and the Jahmiyyah (historically); Shia Muslims (today) | The Quran is something Allah made |
-| **Inner speech uncreated, letters and sounds created** | The Ash‘aris and Maturidis, who include the majority of Sunnis historically | Allah’s speech is an eternal inner meaning (*kalam nafsi*). The Arabic words, the ink and the sound are created expressions of it |
-| **Allah speaks in letters and sounds, and His speech is uncreated** | The Atharis and Hanbalis | Allah speaks when He wills, in letters and sound. The Quran is His uncreated speech, though the reciter’s voice and the paper and ink are created |
-
-The Ash‘ari and Maturidi view is the one stated in the “modern Sunni explanation” above, and Athari writers regard it as the Mu‘tazilite position in disguise. One Athari article on this subject, [“Allah Speaks in Letters and Sounds,”](https://islamicdiscourse.substack.com/p/allah-speaks-in-letters-and-sounds) says that the Ash‘aris and Maturidis made a middle path of their own by denying that Allah’s speech consists of letters and sounds, and that this is historically tied to Ibn Kullab. For a short definition of the Ash‘ari doctrine, see this entry on [inner speech (*kalam nafsi*)](https://old.islamic-content.com/dictionary/word/12144/en), though the page is written from the Athari standpoint and criticises it. For the Maturidi version, see [this 2025 article from the journal *Mutalaa*](https://dergipark.org.tr/en/pub/mutalaa/article/1780087), which explains that Maturidis regard the verbal aspect of the Quran as created while the meaning belongs to Allah’s eternal speech.
-
 The point for readers of *Kitab As-Sunnah* is that the Sunni tradition has never had a single answer. The compilers of this book, who are Athari in outlook, treat the *kalam nafsi* solution as a deviation. The Ash‘ari and Maturidi schools, who today represent a very large share of Sunni Muslims, treat the Athari wording as a risk of identifying Allah’s speech with created letters. Each side can quote Ahmad against the other.
 
 ## How Sunni Muslims Respond
