@@ -50,11 +50,12 @@
     }
   }
 
-  /* ---------- Home page: show 5 articles, "More articles" reveals 5 more ---------- */
+  /* ---------- Home + category pages: show 6 articles, "More articles" reveals 6 more ---------- */
   var grid = $("#articles");
-  if (grid) {
-    var PER = 5, shown = PER;
-    var cards = $$("#articles .card"), more = $("#more"), less = $("#less");
+  var more = $("#more"), less = $("#less");
+  if (grid && more && less) {
+    var PER = 6, shown = PER;
+    var cards = $$("#articles .card");
     var render = function () {
       cards.forEach(function (c, i) { c.classList.toggle("hid", i >= shown); });
       more.style.display = shown >= cards.length ? "none" : "";
