@@ -419,3 +419,5 @@ kbd{font:600 .7rem/1 var(--sans);padding:4px 7px;border:1px solid var(--line);bo
   .rfs-foot span:not(.rfs-toast){display:none}.rfs-foot{padding:0;border:0}
 }
 @media (prefers-reduced-motion:reduce){.rfs-drop,.sbox{animation:none;transition:none}}
+/* Sub-headings inside article sections */
+.prose h4{font-family:var(--serif);font-size:1.15rem;margin:1.2em 0 .3em;line-height:1.25;color:var(--accent)}
