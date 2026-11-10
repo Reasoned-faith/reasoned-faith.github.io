@@ -26,23 +26,6 @@ Three labels appear again and again in the reports, and it helps to know them in
 
 So there were not two positions but at least four, and the reports condemn every one of them except the strictest.
 
-### A Short Timeline
-
-Dates matter in this debate, because they determine which of the statements below can be explained as a reaction to the *mihna* and which cannot. The dates are the commonly given ones (CE, approximate where marked), and readers should confirm them in the sources listed at the end.
-
-| Date | Event |
-|---|---|
-| c. 746 | Death of Jahm ibn Safwan, the figure after whom the Jahmiyyah are named |
-| c. 795 | Death of Imam Malik |
-| c. 797 | Death of ‘Abdullah ibn al-Mubarak |
-| c. 809 | Death of the caliph Harun al-Rashid |
-| c. 814 | Deaths of ‘Abdur-Rahman ibn Mahdi and Sufyan ibn ‘Uyaynah |
-| 827 | Caliph al-Ma’mun publicly adopts the doctrine that the Quran is created |
-| 833 | Al-Ma’mun institutes the *mihna*; Bishr Al-Marisi dies in the same year |
-| 833–c. 850 | The *mihna* continues under al-Mu’tasim and al-Wathiq and into the early reign of al-Mutawakkil, who ends it |
-| 855 | Death of Ahmad ibn Hanbal |
-| 870 | Death of al-Bukhari |
-
 According to [Wikipedia’s article on the Mihna](https://en.wikipedia.org/wiki/Mihna), al-Ma’mun proclaimed the doctrine in 827, and the formal test followed six years later. [Encyclopedia.com’s entry on the Mihna](https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/mihna) adds that modern scholars still debate why al-Ma’mun pressed the matter, and that there is no consensus. Many see it as an attempt to bring the scholars under caliphal authority rather than a purely theological project.
 
 ## The Basic Claim: The Quran Is the Word of Allah and Is Not Created
@@ -269,11 +252,6 @@ The Quran is called Allah’s Word, and the early Sunni scholars drew the conclu
 - [“The Transmission of the Divine Speech (Kalam Allah) to the Prophet According to the Maturidis”](https://dergipark.org.tr/en/pub/mutalaa/article/1780087) (*Mutalaa*, 2025): the Maturidi account of how the verbal Quran is created while the divine speech is not.
 - [“Reflections of Mu‘tezilites’ Opinion of Createdness of Quran on the Theologies of Ash‘ariyyah and Maturidiyyah”](https://dergipark.org.tr/en/download/article-file/153710): on how the inner-speech doctrine arose in response to the Mu‘tazilite arguments.
 - [“The Hermeneutical Extensions of the Debate on al-Kalam al-Nafsi”](https://dergipark.org.tr/tr/pub/auifd/article/487512) (2018): a scholarly study of how the doctrine affects the interpretation of revelation.
-
-### Related Articles on This Site
-
-- *The Quran: Sunni Islam’s Multiple Gods?* (earlier article referred to above)
-- [A Quranic Variant That Makes Differences](/articles/islamic-dilemma/2026-10-13-a-quranic-variant.html)
 
 **Published:** 10 November 2026
 
