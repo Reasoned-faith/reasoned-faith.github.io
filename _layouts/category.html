@@ -1,0 +1,56 @@
+---
+layout: default
+---
+{%- comment -%}
+  One layout for every category AND sub-category page.
+  It reads the category from the file's own location, e.g. articles/islamic-dilemma/index.html
+  (or articles/christian-theology/trinity/index.html), so the small index.html you add per category
+  only needs:   layout: category   and a  title:
+{%- endcomment -%}
+{% include data.html %}
+{%- assign cp_pp = page.path | split: "/" -%}
+{%- assign cp_cat = cp_pp[1] -%}
+{%- assign cp_sub = "" -%}
+{%- if cp_pp.size > 3 -%}{%- assign cp_sub = cp_pp[2] -%}{%- endif -%}
+{%- capture cp_catname %}{% include catname.html cat=cp_cat sub="" %}{% endcapture -%}
+{%- assign cp_pre = "_articles/" | append: cp_cat | append: "/" -%}
+{%- if cp_sub != "" -%}{%- assign cp_pre = cp_pre | append: cp_sub | append: "/" -%}{%- endif -%}
+{%- assign cp_list = arts | where_exp: "a", "a.relative_path contains cp_pre" -%}
+<div class="layout"><div class="col-main">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a> /
+    {% if cp_sub != "" %}<a href="{{ '/articles/' | append: cp_cat | append: '/' | relative_url }}">{{ cp_catname | strip }}</a> / {{ page.title }}{% else %}{{ page.title }}{% endif %}
+  </nav>
+  <div class="sec-head"><h2>{{ page.title }}</h2></div>
+  {% if page.description %}<p class="cp-desc">{{ page.description }}</p>{% endif %}
+
+  {%- if cp_sub == "" -%}
+    {%- assign cp_subpre = "articles/" | append: cp_cat | append: "/" -%}
+    {%- assign cp_subs = allcats | where_exp: "s", "s.path contains cp_subpre" -%}
+    {%- assign cp_has_subs = false -%}
+    {%- for s in cp_subs -%}{%- assign cp_sp = s.path | split: "/" -%}{%- if cp_sp.size == 4 -%}{%- assign cp_has_subs = true -%}{%- endif -%}{%- endfor -%}
+    {%- if cp_has_subs %}
+  <div class="cp-subs">
+    <a class="chip on" href="{{ page.url | relative_url }}">All</a>
+      {%- for s in cp_subs -%}
+        {%- assign cp_sp = s.path | split: "/" -%}
+        {%- if cp_sp.size == 4 -%}
+          {%- assign cp_skey = cp_sp[2] -%}
+          {%- capture cp_sname %}{% include catname.html cat=cp_cat sub=cp_skey %}{% endcapture %}
+    <a class="chip" href="{{ s.url | relative_url }}">{{ cp_sname | strip }}</a>
+        {%- endif -%}
+      {%- endfor %}
+  </div>
+    {%- endif -%}
+  {%- endif %}
+
+  <div class="grid">
+  {%- for a in cp_list %}
+    {% include card.html art=a %}
+  {%- else %}
+    <p class="cp-empty">No articles in this category yet.</p>
+  {%- endfor %}
+  </div>
+</div><aside class="col-side">
+{% include main-categories.html %}
+</aside></div>
