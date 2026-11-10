@@ -1,6 +1,6 @@
 <section id="main-categories">
   <div class="maincats">
-  {% assign main_cats = "apostolic faith,christian theology,islamic dilemma" | split: "," %}
+  {% assign main_cats = "bible study,christian theology,islamic dilemma" | split: "," %}
   {% for c in main_cats %}
   {% capture cname %}{% include catname.html slug=c %}{% endcapture %}
     {% assign pre = "articles/" | append: c | append: "/" %}
