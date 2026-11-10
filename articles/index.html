@@ -1,0 +1,18 @@
+---
+layout: default
+title: All Articles
+description: Every article on the site, newest first.
+---
+{% include data.html %}
+<div class="layout"><div class="col-main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> / Articles</nav>
+  <div class="sec-head"><h2>All Articles</h2></div>
+  <p class="cp-desc">{{ arts.size }} articles, newest first.</p>
+  <div class="grid">
+  {%- for a in arts %}
+    {% include card.html art=a %}
+  {%- endfor %}
+  </div>
+</div><aside class="col-side">
+{% include main-categories.html %}
+</aside></div>
