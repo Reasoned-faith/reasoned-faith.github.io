@@ -44,12 +44,18 @@ layout: default
     {%- endif -%}
   {%- endif %}
 
-  <div class="grid">
+  <div class="grid" id="articles">
   {%- for a in cp_list %}
     {% include card.html art=a %}
   {%- else %}
     <p class="cp-empty">No articles in this category yet.</p>
   {%- endfor %}
+  {%- if cp_list.size > 5 %}
+    <div class="more-row" id="more-row">
+      <button class="more-btn" id="more" type="button">More articles</button>
+      <button class="more-btn" id="less" type="button" style="display:none">Show less</button>
+    </div>
+  {%- endif %}
   </div>
 </div><aside class="col-side">
 {% include main-categories.html %}
