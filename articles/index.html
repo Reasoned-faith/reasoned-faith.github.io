@@ -22,7 +22,7 @@ description: Every article on the site.
   {%- if arts.size > initial %}
   <div class="more-wrap">
     <button type="button" class="more-btn" id="more-btn" aria-controls="art-grid">
-      <span class="more-label">More articles ({{ arts.size | minus: initial }})</span>
+      <span class="more-label">More articles</span>
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
     </button>
     <button type="button" class="more-btn collapse-btn" id="collapse-btn" aria-controls="art-grid" hidden>
@@ -77,13 +77,11 @@ description: Every article on the site.
   var items=[].slice.call(grid.querySelectorAll('.art-item'));
   var initial=parseInt(grid.dataset.initial,10)||6;
   var step=parseInt(grid.dataset.step,10)||6;
-  var label=more.querySelector('.more-label');
   var shown=Math.min(initial,items.length);
 
   function update(){
     var left=items.length-shown;
     more.hidden=left<=0;
-    if(left>0)label.textContent='More articles ('+left+')';
     collapse.hidden=shown<=initial;
   }
 
