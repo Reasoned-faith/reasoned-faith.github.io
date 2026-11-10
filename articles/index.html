@@ -9,7 +9,7 @@ description: Every article on the site.
 <div class="layout"><div class="col-main">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> / Articles</nav>
   <div class="sec-head"><h2>All Articles</h2></div>
-  <p class="cp-desc">{{ arts.size }} articles, newest first.</p>
+  <p class="cp-desc">{{ arts.size }} articles.</p>
 
   <div class="grid grid-two" id="art-grid" data-initial="{{ initial }}" data-step="{{ step }}">
   {%- for a in arts %}
