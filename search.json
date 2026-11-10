@@ -1,0 +1,50 @@
+---
+layout: null
+permalink: /search.json
+sitemap: false
+---
+{%- include data.html -%}
+{"a":[
+{%- for p in arts -%}
+{%- assign pt = p.relative_path | split: "/" -%}
+{%- assign cslug = pt[1] -%}
+{%- capture cname %}{% include catname.html cat=cslug sub="" %}{% endcapture -%}
+{%- assign sname = "" -%}{%- assign sslug = "" -%}
+{%- if pt.size > 3 -%}{%- assign sslug = pt[2] -%}{%- capture sname %}{% include catname.html cat=cslug sub=sslug %}{% endcapture -%}{%- endif -%}
+{%- capture body %}{{ p.content | markdownify | strip_html | normalize_whitespace | truncate: 20000, "" }}{% endcapture -%}
+{"title":{{ p.title | jsonify }},"url":{{ p.url | relative_url | jsonify }},"cat":{{ cname | strip | jsonify }},"cs":{{ cslug | jsonify }},"sub":{{ sname | strip | jsonify }},"ss":{{ sslug | jsonify }},"excerpt":{{ p.excerpt | default: "" | strip_html | normalize_whitespace | jsonify }},"tags":{{ p.tags | jsonify }},"date":{{ p.date | date: "%-d %b %Y" | default: "" | jsonify }},"body":{{ body | strip | jsonify }}}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+],"v":[
+{%- for v in site.data.verses -%}
+{"text":{{ v.text | jsonify }},"ref":{{ v.ref | jsonify }}}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+],"t":[
+{%- for t in site.data.topics -%}
+{"title":{{ t.title | jsonify }},"desc":{{ t.description | default: "" | jsonify }},"q":{{ t.query | default: t.title | jsonify }}}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+],"c":[
+{%- assign first = true -%}
+{%- for c in allcats -%}
+{%- assign sc_pp = c.path | split: "/" -%}
+{%- if sc_pp.size == 3 -%}
+{%- assign sc_key = sc_pp[1] -%}
+{%- capture sc_name %}{% include catname.html cat=sc_key sub="" %}{% endcapture -%}
+{%- assign sc_pre = "_articles/" | append: sc_key | append: "/" -%}
+{%- assign sc_arts = arts | where_exp: "a", "a.relative_path contains sc_pre" -%}
+{%- unless first %},{% endunless -%}{%- assign first = false -%}
+{"name":{{ sc_name | strip | jsonify }},"desc":{{ c.description | default: "" | jsonify }},"url":{{ c.url | relative_url | jsonify }},"n":{{ sc_arts.size }},"parent":""}
+{%- assign sc_subpre = "articles/" | append: sc_key | append: "/" -%}
+{%- assign sc_subs = allcats | where_exp: "s", "s.path contains sc_subpre" -%}
+{%- for s in sc_subs -%}
+{%- assign sc_sp = s.path | split: "/" -%}
+{%- if sc_sp.size == 4 -%}
+{%- assign sc_skey = sc_sp[2] -%}
+{%- capture sc_sname %}{% include catname.html cat=sc_key sub=sc_skey %}{% endcapture -%}
+{%- assign sc_spre = sc_pre | append: sc_skey | append: "/" -%}
+{%- assign sc_sarts = sc_arts | where_exp: "a", "a.relative_path contains sc_spre" -%}
+,{"name":{{ sc_sname | strip | jsonify }},"desc":{{ s.description | default: "" | jsonify }},"url":{{ s.url | relative_url | jsonify }},"n":{{ sc_sarts.size }},"parent":{{ sc_name | strip | jsonify }}}
+{%- endif -%}
+{%- endfor -%}
+{%- endif -%}
+{%- endfor -%}
+]}

@@ -1,0 +1,37 @@
+title: Reasoned Faith
+description: Islamic critique, Christian apologetics, biblical theology, doctrinal studies, and in-depth research by Anthony William.
+author: Anthony William
+whatsapp: "255703338311"
+email: anthonywilliam8311@gmail.com
+verse_text: "Be ready always to give an answer to every man that asketh you a reason of the hope that is in you with meekness and fear."
+verse_ref: "1 Peter 3:15 (KJV)"
+
+# If the site lives at https://USER.github.io/REPO/ set baseurl: "/REPO". For USER.github.io leave it empty.
+baseurl: ""
+url: "https://reasoned-faith.github.io"
+
+# ARTICLES live in the _articles folder (folders inside it = categories).
+# Their web address is built from the folder path with no .html and no #:
+#   _articles/islamic-dilemma/my-article.html  ->  /articles/islamic-dilemma/my-article/
+collections:
+  articles:
+    output: true
+    permalink: /articles/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "articles"
+    values:
+      layout: "article"
+
+# Publish an article even if its date is today/tomorrow (time zones can otherwise hide it).
+future: true
+# Excerpts come only from the "excerpt:" line you write at the top of an article.
+excerpt_separator: ""
+
+plugins:
+  - jekyll-redirect-from   # keeps the OLD article addresses working (redirect_from: in each article)
+  - jekyll-sitemap         # /sitemap.xml with the clean addresses
+
+exclude: [README.md, HOW-TO-POST-ARTICLES.md, Gemfile, Gemfile.lock, _templates]
