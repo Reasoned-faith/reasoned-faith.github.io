@@ -1,0 +1,38 @@
+---
+layout: default
+title: Sitemap
+description: Every page and article on Reasoned Faith in one list.
+---
+{% include data.html %}
+<div class="ap tagpage">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> / Sitemap</nav>
+  <div class="sec-head"><h2>Sitemap</h2></div>
+
+  <section class="tag-group">
+    <h3>Pages</h3>
+    <ul class="tag-list">
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/articles/' | relative_url }}">All articles</a></li>
+      <li><a href="{{ '/tags/' | relative_url }}">Tags</a></li>
+      <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+    </ul>
+  </section>
+
+  {%- for c in allcats -%}
+    {%- assign sm_pp = c.path | split: "/" -%}
+    {%- assign sm_pre = "_articles/" | append: sm_pp[1] | append: "/" -%}
+    {%- if sm_pp.size == 4 -%}{%- assign sm_pre = sm_pre | append: sm_pp[2] | append: "/" -%}{%- endif -%}
+    {%- assign sm_arts = arts | where_exp: "a", "a.relative_path contains sm_pre" %}
+  <section class="tag-group">
+    <h3><a href="{{ c.url | relative_url }}">{{ c.title }}</a> <span>{{ sm_arts.size }}</span></h3>
+    <ul class="tag-list">
+      {%- for a in sm_arts -%}
+        {%- assign sm_ap = a.relative_path | split: "/" -%}
+        {%- if sm_pp.size == 4 or sm_ap.size == 3 %}
+      <li><a href="{{ a.url | relative_url }}">{{ a.title }}</a></li>
+        {%- endif -%}
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endfor %}
+</div>
