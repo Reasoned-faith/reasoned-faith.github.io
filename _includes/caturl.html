@@ -1,0 +1,7 @@
+{%- comment -%} Clean address of a category page, or nothing if that category has no index.html yet.
+  Use: include caturl.html cat=SLUG sub=SUBSLUG (sub optional). {%- endcomment -%}
+{%- assign _cu_path = "articles/" | append: include.cat | append: "/" -%}
+{%- if include.sub and include.sub != "" -%}{%- assign _cu_path = _cu_path | append: include.sub | append: "/" -%}{%- endif -%}
+{%- assign _cu_path = _cu_path | append: "index.html" -%}
+{%- assign _cu_pg = site.pages | where: "path", _cu_path | first -%}
+{%- if _cu_pg -%}{{ _cu_pg.url | relative_url }}{%- endif -%}

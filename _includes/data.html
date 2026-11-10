@@ -1,0 +1,7 @@
+{%- comment -%}
+  Shared lists used by every page.
+  arts    = all articles, newest first
+  allcats = every category / sub-category page (the small index.html files in /articles/...)
+{%- endcomment -%}
+{%- assign arts = site.articles | sort: "date" | reverse -%}
+{%- assign allcats = site.pages | where: "layout", "category" | sort: "order" -%}

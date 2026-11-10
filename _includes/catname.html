@@ -1,0 +1,8 @@
+{%- comment -%} Display name of a category. Use: include catname.html cat=SLUG sub=SUBSLUG (sub optional).
+  Name = "title:" of the category's index.html, or the folder name made readable. {%- endcomment -%}
+{%- assign _cn_path = "articles/" | append: include.cat | append: "/" -%}
+{%- assign _cn_slug = include.cat -%}
+{%- if include.sub and include.sub != "" -%}{%- assign _cn_path = _cn_path | append: include.sub | append: "/" -%}{%- assign _cn_slug = include.sub -%}{%- endif -%}
+{%- assign _cn_path = _cn_path | append: "index.html" -%}
+{%- assign _cn_pg = site.pages | where: "path", _cn_path | first -%}
+{%- if _cn_pg and _cn_pg.title -%}{{ _cn_pg.title }}{%- else -%}{{ _cn_slug | replace: "-", " " | capitalize }}{%- endif -%}

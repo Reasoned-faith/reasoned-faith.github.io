@@ -1,0 +1,52 @@
+{%- comment -%}
+  Sidebar boxes: one per top-level category (add "sidebar: false" to a category's index.html to hide its box).
+  Each box lists its sub-categories first, then articles that sit directly in the category.
+{%- endcomment -%}
+<section id="main-categories">
+  <div class="maincats">
+  {%- for c in allcats -%}
+  {%- assign mc_pp = c.path | split: "/" -%}
+  {%- if mc_pp.size == 3 and c.sidebar != false -%}
+    {%- assign mc_key = mc_pp[1] -%}
+    {%- capture mc_name %}{% include catname.html cat=mc_key sub="" %}{% endcapture -%}
+    {%- assign mc_pre = "_articles/" | append: mc_key | append: "/" -%}
+    {%- assign mc_arts = arts | where_exp: "a", "a.relative_path contains mc_pre" -%}
+    {%- assign mc_subpre = "articles/" | append: mc_key | append: "/" -%}
+    {%- assign mc_subs = allcats | where_exp: "s", "s.path contains mc_subpre" -%}
+    {%- assign mc_n = 0 -%}{%- assign mc_nsub = 0 -%}{%- assign mc_ndirect = 0 -%}
+    {%- for s in mc_subs -%}{%- assign mc_sp = s.path | split: "/" -%}{%- if mc_sp.size == 4 -%}{%- assign mc_nsub = mc_nsub | plus: 1 -%}{%- endif -%}{%- endfor -%}
+    {%- for a in mc_arts -%}{%- assign mc_ap = a.relative_path | split: "/" -%}{%- if mc_ap.size == 3 -%}{%- assign mc_ndirect = mc_ndirect | plus: 1 -%}{%- endif -%}{%- endfor -%}
+    {%- assign mc_total = mc_nsub | plus: mc_ndirect %}
+    <div class="mc">
+      <h3 class="mc-h"><a href="{{ c.url | relative_url }}">{{ mc_name | strip }}</a></h3>
+      <div class="mc-box">
+        <ul>
+          {%- for s in mc_subs -%}
+            {%- assign mc_sp = s.path | split: "/" -%}
+            {%- if mc_sp.size == 4 and mc_n < 5 -%}
+              {%- assign mc_n = mc_n | plus: 1 -%}
+              {%- assign mc_sub = mc_sp[2] -%}
+              {%- capture mc_subname %}{% include catname.html cat=mc_key sub=mc_sub %}{% endcapture %}
+          <li><a href="{{ s.url | relative_url }}">{{ mc_subname | strip }}</a></li>
+            {%- endif -%}
+          {%- endfor -%}
+          {%- for a in mc_arts -%}
+            {%- assign mc_ap = a.relative_path | split: "/" -%}
+            {%- if mc_ap.size == 3 and mc_n < 5 -%}
+              {%- assign mc_n = mc_n | plus: 1 %}
+          <li><a href="{{ a.url | relative_url }}">{{ a.title }}</a></li>
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if mc_n == 0 %}
+          <li class="mc-empty">No articles yet.</li>
+          {%- endif -%}
+          {%- if mc_total > 5 %}
+          <li class="mc-more"><a href="{{ c.url | relative_url }}">View all in {{ mc_name | strip }}</a></li>
+          {%- endif %}
+        </ul>
+      </div>
+    </div>
+  {%- endif -%}
+  {%- endfor %}
+  </div>
+</section>

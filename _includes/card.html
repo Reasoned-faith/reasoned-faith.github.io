@@ -1,0 +1,15 @@
+{%- comment -%} One article card. Use: include card.html art=ARTICLE {%- endcomment -%}
+{%- assign c_art = include.art -%}
+{%- assign c_pt = c_art.relative_path | split: "/" -%}
+{%- assign c_cat = c_pt[1] -%}
+{%- capture c_cname %}{% include catname.html cat=c_cat sub="" %}{% endcapture -%}
+{%- assign c_words = c_art.content | strip_html | number_of_words -%}
+{%- assign c_mins = c_words | divided_by: 200 | plus: 1 -%}
+<a class="card" href="{{ c_art.url | relative_url }}">
+  <div class="body">
+    <span class="tag">{{ c_cname | strip }}</span>
+    <h3>{{ c_art.title }}</h3>
+    <p>{{ c_art.excerpt | strip_html }}</p>
+    <div class="meta">{{ c_art.author | default: site.author }}{% if c_art.date %} · {{ c_art.date | date: "%-d %b %Y" }}{% endif %} · {{ c_mins }} min read</div>
+  </div>
+</a>
