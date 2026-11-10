@@ -1,18 +1,113 @@
 ---
 layout: default
 title: All Articles
-description: Every article on the site, newest first.
+description: Every article on the site.
 ---
 {% include data.html %}
+{%- assign initial = 6 -%}
+{%- assign step = 6 -%}
 <div class="layout"><div class="col-main">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> / Articles</nav>
   <div class="sec-head"><h2>All Articles</h2></div>
   <p class="cp-desc">{{ arts.size }} articles, newest first.</p>
-  <div class="grid">
+
+  <div class="grid grid-two" id="art-grid" data-initial="{{ initial }}" data-step="{{ step }}">
   {%- for a in arts %}
-    {% include card.html art=a %}
+    <div class="art-item"{% if forloop.index > initial %} hidden{% endif %}>
+      {% include card.html art=a %}
+    </div>
   {%- endfor %}
   </div>
+
+  {%- if arts.size > initial %}
+  <div class="more-wrap">
+    <button type="button" class="more-btn" id="more-btn" aria-controls="art-grid">
+      <span class="more-label">More articles ({{ arts.size | minus: initial }})</span>
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <button type="button" class="more-btn collapse-btn" id="collapse-btn" aria-controls="art-grid" hidden>
+      <span>Collapse</span>
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
+  </div>
+  <noscript><style>.art-item[hidden]{display:block!important}.more-wrap{display:none}</style></noscript>
+  {%- endif %}
 </div><aside class="col-side">
 {% include main-categories.html %}
 </aside></div>
+
+<style>
+.grid.grid-two{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+  align-items:stretch;
+}
+.art-item{min-width:0}
+.art-item[hidden]{display:none}
+.art-item.reveal{animation:artIn .35s ease both}
+@keyframes artIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.more-wrap{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:28px 0 8px}
+.more-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 22px;border-radius:999px;
+  border:1px solid currentColor;background:transparent;color:inherit;
+  font:inherit;font-size:.95rem;cursor:pointer;
+  transition:background .15s ease,transform .15s ease;
+}
+.more-btn[hidden]{display:none}
+.more-btn:hover,.more-btn:focus-visible{background:rgba(128,128,128,.14);transform:translateY(-1px)}
+.collapse-btn{opacity:.8}
+
+@media (max-width:640px){
+  .grid.grid-two{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .art-item.reveal{animation:none}
+}
+</style>
+
+<script>
+(function(){
+  var grid=document.getElementById('art-grid');
+  var more=document.getElementById('more-btn');
+  var collapse=document.getElementById('collapse-btn');
+  if(!grid||!more||!collapse)return;
+  var items=[].slice.call(grid.querySelectorAll('.art-item'));
+  var initial=parseInt(grid.dataset.initial,10)||6;
+  var step=parseInt(grid.dataset.step,10)||6;
+  var label=more.querySelector('.more-label');
+  var shown=Math.min(initial,items.length);
+
+  function update(){
+    var left=items.length-shown;
+    more.hidden=left<=0;
+    if(left>0)label.textContent='More articles ('+left+')';
+    collapse.hidden=shown<=initial;
+  }
+
+  more.addEventListener('click',function(){
+    var next=Math.min(shown+step,items.length);
+    for(var i=shown;i<next;i++){
+      items[i].hidden=false;
+      items[i].classList.add('reveal');
+      items[i].style.animationDelay=((i-shown)*80)+'ms';
+    }
+    shown=next;
+    update();
+  });
+
+  collapse.addEventListener('click',function(){
+    for(var j=initial;j<items.length;j++){
+      items[j].hidden=true;
+      items[j].classList.remove('reveal');
+    }
+    shown=Math.min(initial,items.length);
+    update();
+    grid.scrollIntoView({block:'start',behavior:'smooth'});
+  });
+
+  update();
+})();
+</script>
