@@ -9,12 +9,23 @@ title: Tags
 <div class="ap tagpage">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> / Tags</nav>
   <div class="sec-head"><h2>Tags</h2></div>
+
+  {%- comment -%} Mstari wa chips juu {%- endcomment -%}
+  <div class="tag-cloud" role="navigation" aria-label="Jump to tag">
+    {%- for t in taglist -%}
+      {%- if t != "" -%}
+      {%- assign n = arts | where_exp: "a", "a.tags contains t" | size -%}
+      <a class="tag-chip" href="#tag-{{ t | slugify }}">#{{ t }} <span>{{ n }}</span></a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
   {%- for t in taglist -%}
     {%- if t != "" -%}
     {%- assign tagged = arts | where_exp: "a", "a.tags contains t" %}
-  <section class="tag-group">
-    <h3>#{{ t }} <span>{{ tagged.size }}</span></h3>
-    <ul class="tag-list">
+  <section class="tag-row" id="tag-{{ t | slugify }}">
+    <h3 class="tag-name">#{{ t }} <span>{{ tagged.size }}</span></h3>
+    <ul class="tag-articles">
       {%- for a in tagged %}
       <li><a href="{{ a.url | relative_url }}">{{ a.title }}</a></li>
       {%- endfor %}
@@ -25,3 +36,69 @@ title: Tags
   <p class="cp-empty">No tags yet. Add <code>tags: [Trinity, Genesis]</code> to the top of an article.</p>
   {%- endfor %}
 </div>
+
+<style>
+/* Chips za juu */
+.tagpage .tag-cloud{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin:0 0 28px;padding-bottom:20px;
+  border-bottom:1px solid rgba(128,128,128,.25);
+}
+.tagpage .tag-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:999px;
+  border:1px solid rgba(128,128,128,.35);
+  color:inherit;text-decoration:none;font-size:.9rem;
+  transition:background .15s ease,transform .15s ease;
+}
+.tagpage .tag-chip span{
+  font-size:.75rem;opacity:.65;
+  padding:1px 7px;border-radius:999px;background:rgba(128,128,128,.18);
+}
+.tagpage .tag-chip:hover,
+.tagpage .tag-chip:focus-visible{background:rgba(128,128,128,.14);transform:translateY(-1px)}
+
+/* Safu za mlalo */
+.tagpage .tag-row{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:12px 24px;
+  align-items:start;
+  padding:18px 0;
+  border-bottom:1px solid rgba(128,128,128,.2);
+  scroll-margin-top:80px;
+}
+.tagpage .tag-name{
+  margin:0;font-family:var(--serif);font-size:1.15rem;
+  display:flex;align-items:center;gap:8px;
+}
+.tagpage .tag-name span{
+  font-family:inherit;font-size:.75rem;opacity:.65;
+  padding:1px 8px;border-radius:999px;background:rgba(128,128,128,.18);
+}
+.tagpage .tag-articles{
+  list-style:none;margin:0;padding:0;
+  display:flex;flex-wrap:wrap;gap:10px;
+}
+.tagpage .tag-articles a{
+  display:block;padding:8px 14px;border-radius:8px;
+  border:1px solid rgba(128,128,128,.3);
+  color:inherit;text-decoration:none;font-size:.92rem;line-height:1.35;
+  transition:background .15s ease,border-color .15s ease;
+}
+.tagpage .tag-articles a:hover,
+.tagpage .tag-articles a:focus-visible{
+  background:rgba(128,128,128,.12);border-color:currentColor;
+}
+
+/* Simu: safu inakuwa wima, makala zinasogezwa kwa mlalo */
+@media (max-width:700px){
+  .tagpage .tag-row{grid-template-columns:1fr}
+  .tagpage .tag-articles{
+    flex-wrap:nowrap;overflow-x:auto;
+    padding-bottom:8px;scroll-snap-type:x proximity;
+  }
+  .tagpage .tag-articles li{flex:0 0 auto;scroll-snap-align:start}
+  .tagpage .tag-articles a{white-space:nowrap}
+}
+</style>
