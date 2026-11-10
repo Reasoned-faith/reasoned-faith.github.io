@@ -1,4 +1,0 @@
-{%- assign arts = site.pages | where_exp: "p", "p.path contains 'articles/'" | sort: "date" | reverse -%}
-{%- assign cs = "" -%}
-{%- for p in arts -%}{%- assign pt = p.path | split: "/" -%}{%- assign cs = cs | append: pt[1] | append: "," -%}{%- endfor -%}
-{%- assign catlist = cs | split: "," | uniq | sort -%}
