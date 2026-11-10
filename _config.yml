@@ -10,11 +10,28 @@ verse_ref: "1 Peter 3:15 (KJV)"
 baseurl: ""
 url: "https://reasoned-faith.github.io"
 
-exclude: [README.md, HOW-TO-POST-ARTICLES.md, Gemfile, Gemfile.lock]
+# ARTICLES live in the _articles folder (folders inside it = categories).
+# Their web address is built from the folder path with no .html and no #:
+#   _articles/islamic-dilemma/my-article.html  ->  /articles/islamic-dilemma/my-article/
+collections:
+  articles:
+    output: true
+    permalink: /articles/:path/
 
-# Every .html file inside /articles automatically uses the article layout.
 defaults:
   - scope:
-      path: "articles"
+      path: ""
+      type: "articles"
     values:
       layout: "article"
+
+# Publish an article even if its date is today/tomorrow (time zones can otherwise hide it).
+future: true
+# Excerpts come only from the "excerpt:" line you write at the top of an article.
+excerpt_separator: ""
+
+plugins:
+  - jekyll-redirect-from   # keeps the OLD article addresses working (redirect_from: in each article)
+  - jekyll-sitemap         # /sitemap.xml with the clean addresses
+
+exclude: [README.md, HOW-TO-POST-ARTICLES.md, Gemfile, Gemfile.lock, _templates]

@@ -7,39 +7,18 @@ title: Home
 <div class="layout"><div class="col-main">
 <section id="latest">
   <div class="grid" id="articles">
-  {% for p in arts %}
-    {% assign pt = p.path | split: "/" %}
-    {% assign cat = pt[1] %}{% capture cname %}{% include catname.html slug=cat %}{% endcapture %}
-    {% assign sub = "" %}{% assign sname = "" %}
-    {% if pt.size > 3 %}{% assign sub = pt[2] %}{% capture sname %}{% include catname.html slug=sub %}{% endcapture %}{% endif %}
-    {% assign mins = p.content | number_of_words | divided_by: 200 | plus: 1 %}
-    {% capture hay %}{{ p.title }} {{ p.excerpt }} {{ cname | strip }} {{ sname | strip }} {{ p.tags | join: ' ' }}{% endcapture %}
-    <a class="card" href="{{ p.url | relative_url }}" data-cat="{{ pt[1] }}" data-sub="{{ sub }}" data-subname="{{ sname | strip }}" data-s="{{ hay | strip_newlines | escape }}">
-      <div class="body">
-        <span class="tag">{{ cname | strip }}</span>
-        <h3>{{ p.title }}</h3>
-        <p>{{ p.excerpt }}</p>
-        <div class="meta">{{ p.author | default: site.author }}{% if p.date %} · {{ p.date | date: "%-d %b %Y" }}{% endif %} · {{ mins }} min read</div>
-      </div>
-    </a>
-  {% endfor %}
+  {%- for p in arts %}
+    {% include card.html art=p %}
+  {%- endfor %}
     <div class="more-row" id="more-row">
       <button class="more-btn" id="more" type="button">More articles</button>
       <button class="more-btn" id="less" type="button" style="display:none">Show less</button>
     </div>
   </div>
+  <p class="all-link"><a href="{{ '/articles/' | relative_url }}">Browse all {{ arts.size }} articles →</a></p>
 </section>
 
 {% include verse-bar.html cls="vd" id="vd" %}
-
-<section id="catpage" style="display:none">
-  <a class="back" href="#" data-home>← Back to home</a>
-  <div class="sec-head"><h2 id="cp-title"></h2></div>
-  <p class="cp-desc" id="cp-desc"></p>
-  <div class="cp-subs" id="cp-subs"></div>
-  <div class="grid" id="cp-grid"></div>
-</section>
-
 </div><aside class="col-side" id="side">
 {% include main-categories.html %}
 
@@ -47,7 +26,7 @@ title: Home
   <div class="sec-head"><h2>Featured Posts</h2></div>
   <div class="topics">
   {%- for p in arts limit: 12 -%}
-    <a href="{{ p.url | relative_url }}" class="topic"{% if forloop.index > 3 %} style="display:none"{% endif %}><b>{{ p.title }}</b><span>{{ p.excerpt }}</span></a>
+    <a href="{{ p.url | relative_url }}" class="topic"{% if forloop.index > 3 %} style="display:none"{% endif %}><b>{{ p.title }}</b><span>{{ p.excerpt | strip_html }}</span></a>
   {%- endfor -%}
   </div>
 </section>
