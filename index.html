@@ -1,0 +1,27 @@
+---
+layout: default
+title: Tags
+---
+{% include data.html %}
+{%- assign all_tags = "" -%}
+{%- for p in arts -%}{%- for t in p.tags -%}{%- assign all_tags = all_tags | append: t | append: "|" -%}{%- endfor -%}{%- endfor -%}
+{%- assign taglist = all_tags | split: "|" | uniq | sort_natural -%}
+<div class="ap tagpage">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> / Tags</nav>
+  <div class="sec-head"><h2>Tags</h2></div>
+  {%- for t in taglist -%}
+    {%- if t != "" -%}
+    {%- assign tagged = arts | where_exp: "a", "a.tags contains t" %}
+  <section class="tag-group">
+    <h3>#{{ t }} <span>{{ tagged.size }}</span></h3>
+    <ul class="tag-list">
+      {%- for a in tagged %}
+      <li><a href="{{ a.url | relative_url }}">{{ a.title }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+    {%- endif -%}
+  {%- else %}
+  <p class="cp-empty">No tags yet. Add <code>tags: [Trinity, Genesis]</code> to the top of an article.</p>
+  {%- endfor %}
+</div>
