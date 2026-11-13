@@ -2,7 +2,7 @@
 title: "The Uncreated Recitation of the Quran"
 author: Anthony William
 date: 2026-11-10
-excerpt: "An examination of early Sunni reports on the uncreated Quran, the status of human recitation, the arguments used to defend the doctrine, and the punishments advocated for those who disagreed."
+excerpt: "What early Sunni reports say about the uncreated Quran, human recitation, and the punishments urged for those who disagreed."
 tags: ["Quran", "Uncreated Quran", "Kitab as-Sunnah", "Jahmiyyah", "Ahmad ibn Hanbal", "Sunni Islam", "Islamic Dilemma"]
 redirect_from:
   - "/articles/islamic-dilemma/the-uncreated-recitation-of-the-quran-formatted (1)/"
