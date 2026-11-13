@@ -2,7 +2,7 @@
 title: "Archaeology and Genesis"
 author: Anthony William
 date: 2026-10-21
-excerpt: "What has archaeology confirmed about the Bible, and which popular arguments should defenders retire? A careful look at the flood, Babel and Genesis in its ancient setting."
+excerpt: "What has archaeology confirmed about the Bible, and which arguments should defenders retire? A look at the flood, Babel and Genesis in its setting."
 tags: ["Archaeology", "Genesis", "Christian Apologetics", "Biblical Archaeology", "Flood Narrative", "Tower of Babel", "Epic of Gilgamesh", "Historical Reliability of the Bible", "Biblical Theology"]
 redirect_from:
   - "/articles/Genesis/archaeology-and-genesis.html"
