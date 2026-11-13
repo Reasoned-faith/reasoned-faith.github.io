@@ -1,5 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" data-base="{{ '/' | relative_url }}" data-ver="{{ site.time | date: '%s' }}">
+ {% if page.collection == 'articles' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.excerpt | strip_html | jsonify }},
+  "author": { "@type": "Person", "name": {{ site.author | jsonify }} },
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "mainEntityOfPage": "{{ page.url | absolute_url }}"
+}
+</script>
+{% elsif page.url == '/' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ site.title | jsonify }},
+  "url": "{{ site.url }}/",
+  "description": {{ site.description | jsonify }}
+}
+</script>
+{% endif %} 
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
