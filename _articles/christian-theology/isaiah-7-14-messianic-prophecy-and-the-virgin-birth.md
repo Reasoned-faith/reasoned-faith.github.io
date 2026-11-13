@@ -1,8 +1,8 @@
 ---
-title: "Isaiah 7:14: Messianic Prophecy and the Virgin Birth"
+title: "Isaiah 7:14: Messiah and the Virgin Birth"
 author: Anthony William
 date: 2026-11-11
-excerpt: "Is Isaiah 7:14 about the Messiah, and does it speak of a virgin birth? A look at the ancient Jewish targums, early rabbinic sources and the Septuagint’s use of the word virgin."
+excerpt: "Is Isaiah 7:14 about the Messiah and a virgin birth? A look at the Jewish targums, early rabbis and the Septuagint’s word for virgin."
 tags: ["Isaiah 7:14", "Virgin Birth", "Messianic Prophecy", "Targum Jonathan", "Septuagint", "Almah", "Immanuel", "Hezekiah", "Vatican II", "Biblical Studies"]
 ---
 
