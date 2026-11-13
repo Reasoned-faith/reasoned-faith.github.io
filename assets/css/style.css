@@ -102,8 +102,9 @@ nav a:hover,nav a.on{color:var(--accent);background:var(--accent-soft)}
 /* Sections */
 section{padding:28px 0}
 .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px;border-bottom:1px solid var(--line);padding-bottom:10px}
-.sec-head h2{font-family:var(--serif);font-size:1.9rem;margin:0;font-weight:700}
-.sec-head h2::before{content:"";display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:3px;margin-right:12px;vertical-align:-3px}
+.sec-head h1,.sec-head h2{font-family:var(--serif);font-size:1.9rem;margin:0;font-weight:700}
+.sec-head h1::before,.sec-head h2::before{content:"";display:inline-block;width:8px;height:22px;background:var(--accent);border-radius:3px;margin-right:12px;vertical-align:-3px}
+
 .sec-head a{font-size:.85rem;color:var(--accent);font-weight:500}
 .grid{display:grid;gap:20px;grid-template-columns:repeat(3,1fr)}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
