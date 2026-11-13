@@ -1,7 +1,7 @@
 ---
 title: "The Deity and Authority of Jesus Christ"
 date: 2026-10-08
-   excerpt: "What Jesus claimed about himself, how his disciples understood him, and the evidence of prophecy, his sinless life, and the resurrection."
+excerpt: "What Jesus claimed about himself, how his disciples understood him, and the evidence of prophecy, his sinless life, and the resurrection."
 redirect_from:
   - "/articles/christian theology/2026-10-08-deity-and-authority-of-jesus-christ (1).html"
   - "/articles/christian theology/deity-and-authority-of-jesus-christ.html"
