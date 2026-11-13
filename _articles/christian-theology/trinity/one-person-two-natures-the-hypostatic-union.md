@@ -1,5 +1,5 @@
 ---
-title: "One Person, Two Natures: The Hypostatic Union Explained"
+title: "Hypostatic Union: One Person, Two Natures"
 author: Anthony William
 date: 2026-11-05
 excerpt: "How can Jesus be fully God and fully man? A clear explanation of the two natures of Christ, the hypostatic union, and what it means to say God suffered."
