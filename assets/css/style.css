@@ -280,7 +280,7 @@ img,video,iframe,svg{max-width:100%}
   /* Sections and cards */
   section{padding:20px 0}
   .layout{padding-top:16px}
-  .sec-head h2{font-size:1.5rem}
+   .sec-head h1,.sec-head h2{font-size:1.5rem}
   .grid{gap:14px}
   .body{padding:16px}
   .card h3{font-size:1.25rem}
@@ -343,7 +343,7 @@ img,video,iframe,svg{max-width:100%}
   .subnav a{padding:5px 12px;font-size:.82rem}
   .body{padding:14px}
   .topic{padding:14px 15px}
-  .sec-head h2{font-size:1.35rem}
+    .sec-head h1,.sec-head h2{font-size:1.35rem}
   .sb-btn{padding:7px 12px;font-size:.8rem}
   .sharepanel{left:8px;right:8px}
   .sp-app i{width:42px;height:42px}
