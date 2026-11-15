@@ -509,10 +509,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 .sf-nav ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .sf-nav a{color:#6ea8ff;font-size:.95rem;font-weight:500;transition:color .15s}
 .sf-nav a:hover,.sf-nav a:focus-visible{color:#a8cbff;text-decoration:underline;text-underline-offset:3px}
-.sf-contact ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.sf-contact a{display:flex;align-items:center;gap:12px;color:#6ea8ff;font-size:.95rem;font-weight:500;overflow-wrap:anywhere;transition:color .15s}
-.sf-contact a svg{flex:none;width:20px;height:20px}
-.sf-contact a:hover,.sf-contact a:focus-visible{color:#a8cbff;text-decoration:underline;text-underline-offset:3px}
+.sf-icons{display:flex;gap:14px}
+.sf-icons a{display:grid;place-items:center;width:48px;height:48px;border:1px solid #2f343f;border-radius:50%;background:#1b1e26;color:#e6e8ee;transition:border-color .2s,color .2s,background .2s,transform .2s}
+.sf-icons a svg{width:22px;height:22px}
+.sf-icons a:hover,.sf-icons a:focus-visible{border-color:#6ea8ff;color:#6ea8ff;background:#222633;transform:translateY(-2px)}
 .sf-bottom{margin-top:48px;padding-top:20px;border-top:1px solid #e6e8ee;text-align:center}
 .sf-copy{font-size:.82rem;color:#6f7581}
 .sf-verse{margin-top:10px;font-size:.82rem;color:#d3e2f5}
