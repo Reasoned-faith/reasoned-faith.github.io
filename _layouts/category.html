@@ -21,7 +21,7 @@ layout: default
     <a href="{{ '/' | relative_url }}">Home</a> /
     {% if cp_sub != "" %}<a href="{{ '/articles/' | append: cp_cat | append: '/' | relative_url }}">{{ cp_catname | strip }}</a> / {{ page.title }}{% else %}{{ page.title }}{% endif %}
   </nav>
-  <div class="sec-head"><h2>{{ page.title }}</h2></div>
+  <div class="sec-head"><h1>{{ page.title }}</h1></div>
   {% if page.description %}<p class="cp-desc">{{ page.description }}</p>{% endif %}
 
   {%- if cp_sub == "" -%}
