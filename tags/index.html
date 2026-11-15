@@ -8,9 +8,9 @@ excerpt: Browse every topic covered on Reasoned Faith.
 {%- for p in arts -%}{%- for t in p.tags -%}{%- assign all_tags = all_tags | append: t | append: "|" -%}{%- endfor -%}{%- endfor -%}
 {%- assign taglist = all_tags | split: "|" | uniq | sort_natural -%}
 <div class="tagpage2">
-  <header class="tp-head">
+  <div class="tp-head">
     <h1>Tags</h1>
-  </header>
+  </div> 
 
   <div class="tp-grid">
   {%- for t in taglist -%}
