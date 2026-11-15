@@ -105,6 +105,7 @@
 <main class="wrap" id="main">
 {{ content }}
 </main>
+
 <footer class="site-footer">
   <div class="wrap">
     <div class="sf-cols">
@@ -137,3 +138,9 @@
     </div>
   </div>
 </footer>
+<button id="totop" class="totop" aria-label="Back to top" hidden>↑</button>
+<script>(function(){var b=document.getElementById("totop");if(!b)return;window.addEventListener("scroll",function(){b.hidden=window.scrollY<600;},{passive:true});b.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});})();</script>
+<script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ '/assets/js/search.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+</body>
+</html>
