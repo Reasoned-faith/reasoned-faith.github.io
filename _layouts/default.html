@@ -119,11 +119,13 @@
       </section>
     </div>
     <div class="sf-bottom">
-      <div class="sf-copy">© {{ site.time | date: "%Y" }} {{ site.title }} – {{ site.author }} · <a href="{{ '/about/' | relative_url }}">About</a> · <a href="{{ '/contact/' | relative_url }}">Contact</a> · <a href="{{ '/sitemap/' | relative_url }}">Sitemap</a></div>
+      <div class="sf-copy">© {{ site.time | date: "%Y" }} {{ site.title }} – {{ site.author }} · <a href="{{ '/about/' | relative_url }}">About</a> · <a href="{{ '/contact/' | relative_url }}">Contact</a> · <a href="{{ '/disclaimer/' | relative_url }}">Disclaimer</a> · <a href="{{ '/feed/articles.xml' | relative_url }}">RSS</a> · <a href="{{ '/sitemap/' | relative_url }}">Sitemap</a></div>
       <div class="sf-verse">“{{ site.verse_text }}” — {{ site.verse_ref }}</div>
     </div>
   </div>
 </footer>
+<button id="totop" class="totop" aria-label="Back to top" hidden>↑</button>
+<script>(function(){var b=document.getElementById("totop");if(!b)return;window.addEventListener("scroll",function(){b.hidden=window.scrollY<600;},{passive:true});b.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});})();</script>
 <script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ '/assets/js/search.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 </body>
