@@ -43,9 +43,12 @@ layout: default
     </div>
   </div>
   <h1>{{ page.title }}</h1>
-  <div class="ap-meta">{{ page.author | default: site.author }}{% if page.date %} · {{ page.date | date: "%-d %B %Y" }}{% endif %}</div>
+  <div class="ap-meta">{{ page.author | default: site.author }}{% if page.date %} · {{ page.date | date: "%-d %B %Y" }}{% endif %}{% if page.updated %} · Updated {{ page.updated | date: "%-d %B %Y" }}{% endif %}</div>
   {% if page.excerpt %}<p class="ap-lead">{{ page.excerpt }}</p>{% endif %}
   {{ content }}
+  <aside class="author-box"><b>{{ page.author | default: site.author }}</b>
+    <p>Christian writer and researcher at {{ site.title }}. <a href="{{ '/about/' | relative_url }}">About the author</a> · <a href="{{ '/contact/' | relative_url }}">Report a correction</a></p>
+  </aside>
 </article>
 </div><aside class="col-side">
 {% include main-categories.html %}
