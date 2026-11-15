@@ -54,7 +54,7 @@
   var grid = $("#articles");
   var more = $("#more"), less = $("#less");
   if (grid && more && less) {
-    var PER = 6, shown = PER;
+     var PER = parseInt(grid.getAttribute("data-per"), 10) || 6, shown = PER;
     var cards = $$("#articles .card");
     var render = function () {
       cards.forEach(function (c, i) { c.classList.toggle("hid", i >= shown); });
