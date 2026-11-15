@@ -20,6 +20,7 @@ title: Home
 </section>
 
 {% include verse-bar.html cls="vd" id="vd" %}
+<div class="rss-row vd"><a class="rss-btn" href="{{ '/feed/articles.xml' | relative_url }}" aria-label="RSS feed" title="RSS feed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 11a8 8 0 0 1 8 8M5 4a15 15 0 0 1 15 15"/><circle cx="6" cy="18" r="1.6" fill="currentColor" stroke="none"/></svg></a></div>
 </div><aside class="col-side" id="side">
 {% include main-categories.html %}
 
@@ -33,6 +34,7 @@ title: Home
 </section>
 </aside></div>
 {% include verse-bar.html cls="vm" id="vm" %}
+<div class="rss-row vm"><a class="rss-btn" href="{{ '/feed/articles.xml' | relative_url }}" aria-label="RSS feed" title="RSS feed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 11a8 8 0 0 1 8 8M5 4a15 15 0 0 1 15 15"/><circle cx="6" cy="18" r="1.6" fill="currentColor" stroke="none"/></svg></a></div>
 <script>window.VERSES={{ site.data.verses | jsonify }};</script>
 <script>
 (function(){
