@@ -527,3 +527,5 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 @media (max-width:900px){.rss-row.vd{display:none}}
 @media (min-width:901px){.rss-row.vm{display:none}}
 @media print{.rss-row{display:none!important}}
+.sf-verse{max-width:760px;margin:10px auto 0;line-height:1.6}
+.sf-verse cite{display:block;margin-top:4px;font-style:normal;font-weight:600}
