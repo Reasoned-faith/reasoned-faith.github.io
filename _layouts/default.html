@@ -105,11 +105,10 @@
 <main class="wrap" id="main">
 {{ content }}
 </main>
-
 <footer class="site-footer">
   <div class="wrap">
     <div class="sf-cols">
-      <section class="sf-col">
+      <section class="sf-col sf-about">
         <h3>{{ site.title }} – {{ site.author }}</h3>
         <p>{{ site.description }}</p>
         <div class="f-contact">
@@ -117,16 +116,29 @@
           <a href="mailto:{{ site.email }}" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
         </div>
       </section>
+      <div class="sf-col sf-nav" role="navigation" aria-label="Footer">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="{{ '/articles/' | relative_url }}">Articles</a></li>
+          <li><a href="{{ '/tags/' | relative_url }}">Tags</a></li>
+          <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+          <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+          <li><a href="{{ '/disclaimer/' | relative_url }}">Disclaimer</a></li>
+          <li><a href="{{ '/sitemap/' | relative_url }}">Sitemap</a></li>
+        </ul>
+      </div>
+      <section class="sf-col sf-news">
+        <h3>Newsletter</h3>
+        <form class="sf-form" id="nl-form" data-email="{{ site.email }}"{% if site.newsletter_action %} action="{{ site.newsletter_action }}" method="post" target="_blank"{% endif %}>
+          <label class="sr-only" for="nl-email">Email address</label>
+          <input type="email" id="nl-email" name="email" placeholder="Your email address" autocomplete="email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </section>
     </div>
     <div class="sf-bottom">
-      <div class="sf-copy">© {{ site.time | date: "%Y" }} {{ site.title }} – {{ site.author }} · <a href="{{ '/about/' | relative_url }}">About</a> · <a href="{{ '/contact/' | relative_url }}">Contact</a> · <a href="{{ '/disclaimer/' | relative_url }}">Disclaimer</a> · <a href="{{ '/feed/articles.xml' | relative_url }}">RSS</a> · <a href="{{ '/sitemap/' | relative_url }}">Sitemap</a></div>
+      <div class="sf-copy">© {{ site.time | date: "%Y" }} {{ site.title }} – {{ site.author }}</div>
       <div class="sf-verse">“{{ site.verse_text }}” — {{ site.verse_ref }}</div>
     </div>
   </div>
 </footer>
-<button id="totop" class="totop" aria-label="Back to top" hidden>↑</button>
-<script>(function(){var b=document.getElementById("totop");if(!b)return;window.addEventListener("scroll",function(){b.hidden=window.scrollY<600;},{passive:true});b.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});})();</script>
-<script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ '/assets/js/search.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
-</body>
-</html>
