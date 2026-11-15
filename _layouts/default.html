@@ -11,10 +11,23 @@
 <meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | escape }}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <meta property="og:type" content="{% if page.collection == 'articles' %}article{% else %}website{% endif %}">
-<meta property="og:image" content="{{ page.image | default: '/assets/img/social-card.png' | absolute_url }}">
+<meta property="og:image" content="{{ '/assets/img/social-card.png' | absolute_url }}">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image"> 
+<meta property="og:image:alt" content="Reasoned Faith: Christian apologetics, biblical theology and Islamic critique">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ '/assets/img/social-card.png' | absolute_url }}">
+<meta name="twitter:title" content="{% if page.title and page.url != '/' %}{{ page.title | escape }}{% else %}{{ site.title }}{% endif %}">
+<meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | escape }}">
+<meta property="og:locale" content="en_US">
+<meta name="author" content="{{ page.author | default: site.author | escape }}">
+{%- if page.collection == 'articles' %}
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+{%- for t in page.tags %}
+<meta property="article:tag" content="{{ t | escape }}">
+{%- endfor %}
+{%- endif %}
 <link rel="icon" href="{{ '/favicon.ico' | relative_url }}?v=2" sizes="any">
 <link rel="icon" href="{{ '/favicon.svg' | relative_url }}?v=2" type="image/svg+xml">
 <link rel="icon" href="{{ '/icon-192.png' | relative_url }}?v=2" type="image/png" sizes="192x192">
@@ -124,7 +137,7 @@
           <li><a href="{{ '/sitemap/' | relative_url }}">Sitemap</a></li>
         </ul>
       </div>
-         <section class="sf-col sf-contact">
+      <section class="sf-col sf-contact">
         <h3>Contact</h3>
         <div class="sf-icons">
           <a href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" title="WhatsApp">
@@ -136,11 +149,11 @@
         </div>
       </section>
     </div>
-        <div class="sf-bottom">
+    <div class="sf-bottom">
       <div class="sf-copy">&copy; {{ site.time | date: "%Y" }} {{ site.title }} &middot; {{ site.author }}</div>
       <div class="sf-verse">Who hath ascended up into heaven, or descended? who hath gathered the wind in his fists? who hath bound the waters in a garment? who hath established all the ends of the earth? what is his name, and what is his son&rsquo;s name, if thou canst tell? &mdash; <cite>Proverbs 30:4 (KJV)</cite></div>
-    </div>   
-    
+    </div>
+  </div>
 </footer>
 
 <script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
