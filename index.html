@@ -7,7 +7,7 @@ title: Home
 
 <div class="layout"><div class="col-main">
 <section id="latest">
-  <div class="grid" id="articles">
+    <div class="grid" id="articles" data-per="10">
   {%- for p in arts %}
     {% include card.html art=p %}
   {%- endfor %}
