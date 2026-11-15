@@ -17,13 +17,13 @@ excerpt: Browse every topic covered on Reasoned Faith.
     {%- if t != "" -%}
     {%- assign tagged = arts | where_exp: "a", "a.tags contains t" -%}
     {%- assign n = tagged.size -%}
-    {%- assign custom = site.data.tags[t] -%}
+    {%- assign first = tagged | first -%}
+    {%- assign ex = first.excerpt | strip_html | normalize_whitespace -%}
     <a class="tp-card" id="tag-{{ t | slugify }}" href="{{ '/' | relative_url }}?q={{ t | uri_escape }}">
       <h2 class="tp-name">{{ t }}</h2>
       <p class="tp-desc">
-        {%- if custom -%}{{ custom }}
-        {%- elsif n == 1 -%}Explore the Reasoned Faith article on {{ t }}, with scripture, history, and careful argument.
-        {%- else -%}Explore {{ n }} Reasoned Faith articles on {{ t }}, with scripture, history, and careful argument.
+        {%- if ex != "" -%}{{ ex | truncatewords: 22 }}
+        {%- else -%}{{ first.title }}{% if n > 1 %} and {{ n | minus: 1 }} more.{% endif %}
         {%- endif -%}
       </p>
       <span class="tp-count">{{ n }} {% if n == 1 %}Post{% else %}Posts{% endif %}</span>
