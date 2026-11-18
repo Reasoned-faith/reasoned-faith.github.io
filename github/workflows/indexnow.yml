@@ -1,0 +1,27 @@
+name: IndexNow
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for GitHub Pages to deploy
+        run: sleep 120
+      - name: Submit sitemap URLs
+        run: |
+          curl -s https://reasonedfaith.blog/sitemap.xml | grep -o '<loc>[^<]*</loc>' | sed 's/<[^>]*>//g' > urls.txt
+          python3 - <<'EOF'
+          import json, urllib.request
+          urls = [u.strip() for u in open("urls.txt") if u.strip()]
+          body = json.dumps({
+              "host": "reasonedfaith.blog",
+              "key": "7dabbf50daa4c6cce23d0689630ecf45",
+              "keyLocation": "https://reasonedfaith.blog/7dabbf50daa4c6cce23d0689630ecf45.txt",
+              "urlList": urls
+          }).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
+              headers={"Content-Type": "application/json; charset=utf-8"})
+          print(urllib.request.urlopen(req).status)
+          EOF
