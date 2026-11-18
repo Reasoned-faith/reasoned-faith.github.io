@@ -31,8 +31,7 @@ future: true
 excerpt_separator: ""
 
 plugins:
-  - jekyll-redirect-from   # keeps the OLD article addresses working (redirect_from: in each article)
-  - jekyll-sitemap         # /sitemap.xml with the clean addresses
+  - jekyll-sitemap         # fallback; your own sitemap.xml overrides it
   - jekyll-feed
 
 exclude: [README.md, HOW-TO-POST-ARTICLES.md, Gemfile, Gemfile.lock, _templates]
