@@ -1,5 +1,5 @@
 ---
-title: "Jehovah’s Witnesses and the Deity of Christ"
+title: "Jehovah’s Witnesses on Christ as a GOD"
 date: 2026-11-19
 excerpt: "What Jehovah’s Witnesses actually teach about Jesus, where the New Testament answers them, and where we must be careful to represent them fairly."
 tags: ["Jehovah’s Witnesses", "Deity of Christ", "New World Translation", "Arianism", "Resurrection", "Christian Theology"]
