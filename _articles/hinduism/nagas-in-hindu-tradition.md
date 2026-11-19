@@ -1,4 +1,5 @@
 ---
+seo_title: "Naga Worship: A Christian Apologetic Look"
 title: "The Serpent in the Garden and the Shrine: A Christian Apologetic Look at Naga Worship"
 excerpt: "Examining the Hindu veneration of Nagas through the lens of biblical theology, spiritual warfare, and the ultimate victory of Christ over the ancient serpent."
 date: 2026-10-04
