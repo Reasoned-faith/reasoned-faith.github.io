@@ -38,8 +38,21 @@ title: Home
 (function(){
   var c=document.querySelector("#topics .topics"); if(!c) return;
   var items=[].slice.call(c.children), n=items.length; if(n<=3) return;
-  var start=Math.floor(Date.now()/864e5)%n;
-  items.forEach(function(el){el.style.display="none";});
-  for(var i=0;i<3;i++) items[(start+i)%n].style.display="";
+  var SLOT=300000;
+  c.style.transition="opacity .35s";
+  function render(fade){
+    var start=(Math.floor(Date.now()/SLOT)*3)%n;
+    var swap=function(){
+      items.forEach(function(el){el.style.display="none";});
+      for(var i=0;i<3;i++) items[(start+i)%n].style.display="";
+      c.style.opacity=1;
+    };
+    if(fade){c.style.opacity=0;setTimeout(swap,350);}else swap();
+  }
+  render(false);
+  (function tick(){
+    var ms=SLOT-(Date.now()%SLOT);
+    setTimeout(function(){render(true);tick();},ms+50);
+  })();
 })();
 </script>
