@@ -46,7 +46,30 @@
         </ul>
       </div>
     </div>
+    {%- if mc_key == "islamic-dilemma" -%}
+    {%- assign mc_index_done = true -%}
+    <div class="mc mc-index">
+      <h3 class="mc-h"><a href="{{ '/articles/' | relative_url }}">Anthony William Index</a></h3>
+      <div class="mc-box">
+        <ul>
+          <li><a href="{{ '/articles/' | relative_url }}">All articles</a></li>
+          <li><a href="{{ '/tags/' | relative_url }}">Browse by tag</a></li>
+        </ul>
+      </div>
+    </div>
+    {%- endif -%}
   {%- endif -%}
   {%- endfor %}
+  {%- unless mc_index_done %}
+    <div class="mc mc-index">
+      <h3 class="mc-h"><a href="{{ '/articles/' | relative_url }}">Anthony William Index</a></h3>
+      <div class="mc-box">
+        <ul>
+          <li><a href="{{ '/articles/' | relative_url }}">All articles</a></li>
+          <li><a href="{{ '/tags/' | relative_url }}">Browse by tag</a></li>
+        </ul>
+      </div>
+    </div>
+  {%- endunless %}
   </div>
 </section>
