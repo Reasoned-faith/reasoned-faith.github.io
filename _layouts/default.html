@@ -83,7 +83,6 @@
     {% if page.url == '/' %}</h1>{% endif %}
     <nav id="nav" aria-label="Main">
       <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="on"{% endif %}>Home</a>
-      <a href="{{ '/articles/' | relative_url }}"{% if page.url == '/articles/' %} class="on"{% endif %}>Articles</a>
       <a href="{{ '/tags/' | relative_url }}"{% if page.url == '/tags/' %} class="on"{% endif %}>Tags</a>
       <a href="{{ '/contact/' | relative_url }}"{% if page.url == '/contact/' %} class="on"{% endif %}>Contact</a>
       <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} class="on"{% endif %}>About</a>
