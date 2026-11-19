@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{% if page.url == '/' %}{{ site.site_name }} | Christian Apologetics and Islamic Critique{% elsif page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+{%- assign seo_t = page.seo_title | default: page.title -%}
+{%- assign full_t = seo_t | append: ' — ' | append: site.title -%}
+<title>{% if page.url == '/' %}{{ site.site_name }} | Apologetics{% elsif seo_t %}{% if full_t.size <= 65 %}{{ full_t }}{% else %}{{ seo_t | truncate: 65 }}{% endif %}{% else %}{{ site.title }}{% endif %}</title>
 <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | escape }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 <meta property="og:site_name" content="{{ site.site_name }}">
@@ -73,10 +75,12 @@
 {% include data.html %}
 <header>
   <div class="wrap bar">
+    {% if page.url == '/' %}<h1 style="margin:0;font:inherit;display:flex">{% endif %}
     <a href="{{ '/' | relative_url }}" class="logo" aria-label="{{ site.title }} home">
       <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect width="40" height="40" rx="10" fill="var(--accent)"/><path d="M20 7v26M12 15h16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M8 33c4-3 8-3 12 0 4-3 8-3 12 0" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/></svg>
       <span>{{ site.title }}</span>
     </a>
+    {% if page.url == '/' %}</h1>{% endif %}
     <nav id="nav" aria-label="Main">
       <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="on"{% endif %}>Home</a>
       <a href="{{ '/articles/' | relative_url }}"{% if page.url == '/articles/' %} class="on"{% endif %}>Articles</a>
