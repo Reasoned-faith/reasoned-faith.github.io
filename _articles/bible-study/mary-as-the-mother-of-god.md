@@ -1,4 +1,5 @@
 ---
+seo_title: "Mary as the Mother of God: Biblical Foundations"
 title: "Mary as the Mother of God: Biblical, Historical, and Theological Foundations"
 date: 2026-09-22
 excerpt: "Why the Church calls Mary Theotokos, the Mother of God, and what that title says about the identity of Jesus Christ."
