@@ -1,4 +1,5 @@
 ---
+seo_title: "The Prophet of Shirk Strikes Yet Again"
 title: "The Prophet of Shirk Strikes Yet Again: The Satanic Verses and the Protection of Christ"
 date: 2026-10-04
 redirect_from:
